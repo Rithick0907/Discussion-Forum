@@ -18,11 +18,11 @@ export const InputStyles = styled.div`
   }
 `;
 
-const Input = ({ type }) => (
+const Input = ({ name, type }) => (
   <InputStyles>
     <Form.Group controlId={`formBasicEmail ${type}`}>
-      <Form.Label>{type.charAt(0).toUpperCase() + type.slice(1)}</Form.Label>
-      <Form.Control autocomplete="off" type={type} />
+      <Form.Label>{name}</Form.Label>
+      <Form.Control autoComplete="off" type={type} />
     </Form.Group>
   </InputStyles>
 );

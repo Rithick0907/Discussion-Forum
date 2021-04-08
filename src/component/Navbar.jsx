@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { Button, Container, Form, Navbar } from "react-bootstrap";
 import { IoIosGlobe } from "react-icons/io";
@@ -16,17 +15,14 @@ const Styles = styled.div`
   .navbar-brand img {
     margin: 0 10px 5px 0;
   }
-  .navbar-brand-root {
-    color: dodgerblue;
-  }
 `;
 
 const CustomNavbar = ({ addQuestion }) => {
   return (
     <Styles>
-      <Navbar className="navbar" variant="light" expand="lg">
+      <Navbar id="navbar" variant="light" expand="lg">
         <Container>
-          <Navbar.Brand className="navbar-brand" href="#">
+          <Navbar.Brand href="#">
             <img
               src="/favicon.ico"
               alt="Discussion Forum Logo"
