@@ -32,14 +32,10 @@ const Registration = () => (
             </Row>
             <Row className="second-row">
               <Col sm={12} md={6}>
-                <Link className="link" to="#">
-                  Log In Email Address
-                </Link>
+                <Link to="/login">Log In Email Address</Link>
               </Col>
               <Col sm={12} md={6}>
-                <Link className="link" to="#">
-                  Log In with Google
-                </Link>
+                <Link to="#">Log In with Google</Link>
               </Col>
             </Row>
           </div>

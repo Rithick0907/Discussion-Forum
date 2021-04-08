@@ -95,7 +95,7 @@ const Login = () => (
             </Row>
             <Row className="second-row">
               <Col sm={12} md={6}>
-                <Link to="#">Create an Account</Link>
+                <Link to="/signup">Create an Account</Link>
               </Col>
               <Col sm={12} md={6}>
                 <Link to="#">Log In with Google</Link>
