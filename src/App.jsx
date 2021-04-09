@@ -1,20 +1,20 @@
 import { Switch, Route, Redirect } from "react-router-dom";
-import Landing from "./pages/Landing";
-import Registration from "./pages/Registration";
-import Login from "./pages/Login";
+import routes from "./routes";
+
+const getRoutes = (routes) =>
+  routes.map((route, index) => (
+    <Route
+      key={index}
+      exact
+      path={route.path}
+      render={(props) => <route.component {...props} />}
+    />
+  ));
 
 const App = () => (
   <Switch>
-    <Route path="/login">
-      <Login />
-    </Route>
-    <Route path="/signup">
-      <Registration />
-    </Route>
-    <Route path="/main">
-      <Landing />
-    </Route>
-    <Redirect to="/main" />
+    {getRoutes(routes)}
+    <Redirect to="/login" />
   </Switch>
 );
 

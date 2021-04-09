@@ -1,8 +1,8 @@
 import { Col, Container, Form, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Navbar from "../component/Navbar";
-import Input from "../component/Input";
-import Button from "../component/SubmitButton";
+import Navbar from "../components/Navbar";
+import Input from "../components/Input";
+import Button from "../components/SubmitButton";
 import { Styles } from "./Login";
 
 const Registration = () => (
