@@ -61,6 +61,7 @@ export const Styles = styled.div`
   a {
     color: inherit;
     text-decoration: none;
+    width: 100%;
   }
   .col-sm-10 a {
     color: gray;

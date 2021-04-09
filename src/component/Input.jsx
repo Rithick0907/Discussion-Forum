@@ -1,7 +1,7 @@
 import { Button, Form } from "react-bootstrap";
 import styled from "styled-components";
 
-export const InputStyles = styled.div`
+const InputStyles = styled.div`
   .form-label {
     display: inline-block;
     max-width: 100%;

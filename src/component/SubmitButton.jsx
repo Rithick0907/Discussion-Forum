@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Button } from "react-bootstrap";
 
-export const CustomButton = styled(Button)`
+const ButtonStyles = styled(Button)`
   background-color: rgb(252, 67, 100);
   border: 0;
   border-radius: 25px;
@@ -17,7 +17,7 @@ export const CustomButton = styled(Button)`
 
 const SubmitButton = ({ name }) => (
   <div className="text-center">
-    <CustomButton type="submit">{name}</CustomButton>
+    <ButtonStyles type="submit">{name}</ButtonStyles>
   </div>
 );
 

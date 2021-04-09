@@ -14,7 +14,7 @@ const App = () => (
     <Route path="/main">
       <Landing />
     </Route>
-    <Redirect to="/login" />
+    <Redirect to="/main" />
   </Switch>
 );
 
