@@ -3,7 +3,7 @@ import { Col, Container, Form, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Input from "../components/Input";
-import Button from "../components/SubmitButton";
+import Button from "../components/CustomButtons";
 
 export const Styles = styled.div`
   background-color: rgb(245, 245, 248);
@@ -58,6 +58,10 @@ export const Styles = styled.div`
     text-decoration: none;
   }
 
+  .btn > button {
+    margin: auto;
+  }
+
   a {
     color: inherit;
     text-decoration: none;
@@ -89,7 +93,9 @@ const Login = () => (
                 <Form>
                   <Input name="Email" type="email" />
                   <Input name="Password" type="password" />
-                  <Button name="Log In" />
+                  <div className="text-center">
+                    <Button>Log In</Button>
+                  </div>
                   <Link to="#">Forget Password?</Link>
                 </Form>
               </Col>

@@ -1,17 +1,20 @@
 import styled from "styled-components";
-import { Button, Container, Form, Navbar } from "react-bootstrap";
-import { IoIosGlobe } from "react-icons/io";
+import { Container, Form, Navbar } from "react-bootstrap";
+import Button from "./CustomButtons";
 
 const NavStyles = styled.div`
   .navbar {
     background-color: white;
     width: 100%;
   }
+
   .navbar-brand {
     color: grey;
+    display: flex;
     font-size: 2.5rem;
     font-weight: 500px;
   }
+
   .navbar-brand img {
     margin: 0 10px 5px 0;
   }
@@ -30,14 +33,7 @@ const CustomNavbar = ({ addQuestion }) => (
           />
           Discussion Forum
         </Navbar.Brand>
-        {addQuestion && (
-          <Form inline className="ml-auto">
-            <Button variant="info">
-              <IoIosGlobe size="1.5em" />
-              <span className="ml-2">Add Question</span>
-            </Button>
-          </Form>
-        )}
+        {addQuestion && <Button>Add Question</Button>}
       </Container>
     </Navbar>
   </NavStyles>

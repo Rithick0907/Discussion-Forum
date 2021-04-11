@@ -1,7 +1,7 @@
 import { Switch, Route, Redirect } from "react-router-dom";
 import routes from "./routes";
 
-const getRoutes = (routes) =>
+const getRoutes = () =>
   routes.map((route, index) => (
     <Route
       key={index}
@@ -13,7 +13,7 @@ const getRoutes = (routes) =>
 
 const App = () => (
   <Switch>
-    {getRoutes(routes)}
+    {getRoutes()}
     <Redirect to="/login" />
   </Switch>
 );

@@ -7,19 +7,19 @@ import Feeds from "../components/Feeds";
 const LandingStyles = styled.div`
   background-color: rgb(245, 245, 248);
   width: 100%;
-  height: 100vh;
+
+  & > .container {
+    font-size: 1.5rem;
+    padding: 4rem 0;
+  }
 `;
 
 const Landing = () => (
   <LandingStyles>
-    <header>
-      <Navbar addQuestion />
-    </header>
-    <main>
-      <Container>
-        <Feeds />
-      </Container>
-    </main>
+    <Navbar addQuestion />
+    <Container>
+      <Feeds />
+    </Container>
   </LandingStyles>
 );
 

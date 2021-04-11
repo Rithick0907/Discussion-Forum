@@ -2,7 +2,7 @@ import { Col, Container, Form, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Input from "../components/Input";
-import Button from "../components/SubmitButton";
+import Button from "../components/CustomButtons";
 import { Styles } from "./Login";
 
 const Registration = () => (
@@ -26,7 +26,9 @@ const Registration = () => (
                       <Input name="Confirm Password" type="password" />
                     </Col>
                   </Form.Row>
-                  <Button name="Sign Up" />
+                  <div className="text-center">
+                    <Button>Sign Up</Button>
+                  </div>
                 </Form>
               </Col>
             </Row>
