@@ -2,7 +2,7 @@ import { Container, Form, Navbar } from "react-bootstrap";
 import styled from "styled-components";
 import Button from "./CustomButtons";
 
-const NavStyles = styled.div`
+const StyledNavbar = styled.div`
   .navbar {
     background-color: white;
     width: 100%;
@@ -21,7 +21,7 @@ const NavStyles = styled.div`
 `;
 
 const CustomNavbar = ({ addQuestion }) => (
-  <NavStyles>
+  <StyledNavbar>
     <Navbar id="navbar" variant="light" expand="lg">
       <Container>
         <Navbar.Brand href="/login">
@@ -36,7 +36,7 @@ const CustomNavbar = ({ addQuestion }) => (
         {addQuestion && <Button>Add Question</Button>}
       </Container>
     </Navbar>
-  </NavStyles>
+  </StyledNavbar>
 );
 
 export default CustomNavbar;

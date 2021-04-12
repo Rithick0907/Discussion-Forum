@@ -5,18 +5,18 @@ import Button from "../components/CustomButtons";
 import Input from "../components/Input";
 import Navbar from "../components/Navbar";
 
-export const Styles = styled.div`
+export const StyledDiv = styled.div`
   background-color: rgb(245, 245, 248);
+  min-height: 700px;
   height: 100vh;
 
   .container {
-    height: 100%;
+    height: 93%;
   }
   .content-box {
     background-color: rgb(255, 255, 255);
     border-radius: 6px;
-    padding: 30px 45px 0 45px;
-    text-align: left;
+    padding: 30px 45px 0;
     width: 100%;
   }
 
@@ -24,30 +24,32 @@ export const Styles = styled.div`
     color: rgb(107, 109, 124);
     font-size: 2rem;
     font-weight: 700;
-    margin: 25px 0;
     line-height: 28px;
+    margin: 25px 0;
     padding-bottom: 22px;
     text-align: center;
   }
+
+  .row {
+    height: 100%;
+  }
+
   .row .col-sm-8 {
     display: flex;
     height: inherit;
     align-items: center;
   }
-  .row {
-    height: 100%;
-  }
+
   .second-row {
     cursor: pointer;
     margin: 0 -45px;
-    width: calc(100% + 90px);
   }
   .second-row .col-sm-12 {
     border-right: 0;
     border: 1px solid rgb(239, 239, 245);
     color: gray;
-    font-weight: bold;
     font-size: 1.2rem;
+    font-weight: bold;
     padding: 20px;
     text-align: center;
   }
@@ -56,10 +58,6 @@ export const Styles = styled.div`
     background-color: rgb(32, 189, 175);
     color: rgb(255, 255, 255);
     text-decoration: none;
-  }
-
-  .btn > button {
-    margin: auto;
   }
 
   a {
@@ -81,7 +79,7 @@ export const Styles = styled.div`
 `;
 
 const Login = () => (
-  <Styles>
+  <StyledDiv>
     <Navbar />
     <Container>
       <Row>
@@ -91,8 +89,8 @@ const Login = () => (
             <Row>
               <Col sm={{ offset: 1, span: 10 }}>
                 <Form>
-                  <Input name="Email" type="email" />
-                  <Input name="Password" type="password" />
+                  <Input type="email">Email</Input>
+                  <Input type="password">Password</Input>
                   <div className="text-center">
                     <Button>Log In</Button>
                   </div>
@@ -112,7 +110,7 @@ const Login = () => (
         </Col>
       </Row>
     </Container>
-  </Styles>
+  </StyledDiv>
 );
 
 export default Login;

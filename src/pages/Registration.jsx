@@ -2,11 +2,11 @@ import { Col, Container, Form, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Button from "../components/CustomButtons";
 import Input from "../components/Input";
-import { Styles } from "./Login";
+import { StyledDiv } from "./Login";
 import Navbar from "../components/Navbar";
 
 const Registration = () => (
-  <Styles>
+  <StyledDiv>
     <Navbar />
     <Container>
       <Row>
@@ -16,14 +16,14 @@ const Registration = () => (
             <Row>
               <Col sm={{ offset: 1, span: 10 }}>
                 <Form>
-                  <Input name="Name" type="text" />
-                  <Input name="Email" type="email" />
+                  <Input type="text">Name</Input>
+                  <Input type="email">Email</Input>
                   <Form.Row>
                     <Col>
-                      <Input name="Password" type="password" />
+                      <Input type="password">Create Password</Input>
                     </Col>
                     <Col>
-                      <Input name="Confirm Password" type="password" />
+                      <Input type="password">Confirm Password</Input>
                     </Col>
                   </Form.Row>
                   <div className="text-center">
@@ -44,7 +44,7 @@ const Registration = () => (
         </Col>
       </Row>
     </Container>
-  </Styles>
+  </StyledDiv>
 );
 
 export default Registration;

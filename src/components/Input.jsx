@@ -1,7 +1,7 @@
 import { Form } from "react-bootstrap";
 import styled from "styled-components";
 
-const InputStyles = styled.div`
+const StyledInput = styled.div`
   .form-label {
     display: inline-block;
     max-width: 100%;
@@ -18,13 +18,13 @@ const InputStyles = styled.div`
   }
 `;
 
-const Input = ({ name, type }) => (
-  <InputStyles>
+const Input = ({ children, type }) => (
+  <StyledInput>
     <Form.Group controlId={`formBasicEmail ${type}`}>
-      <Form.Label>{name}</Form.Label>
+      <Form.Label>{children}</Form.Label>
       <Form.Control autoComplete="off" type={type} />
     </Form.Group>
-  </InputStyles>
+  </StyledInput>
 );
 
 export default Input;
