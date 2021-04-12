@@ -1,6 +1,4 @@
-import React from "react";
 import { Card } from "react-bootstrap";
-import styled from "styled-components";
 import {
   MdAccountCircle,
   MdArrowUpward,
@@ -10,6 +8,7 @@ import {
   MdRepeat,
   MdShare,
 } from "react-icons/md";
+import styled from "styled-components";
 import Button from "./CustomButtons";
 
 const StyledCard = styled(Card)`

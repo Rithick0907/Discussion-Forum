@@ -1,9 +1,9 @@
 import { Col, Container, Form, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Navbar from "../components/Navbar";
-import Input from "../components/Input";
 import Button from "../components/CustomButtons";
+import Input from "../components/Input";
 import { Styles } from "./Login";
+import Navbar from "../components/Navbar";
 
 const Registration = () => (
   <Styles>

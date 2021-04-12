@@ -1,8 +1,7 @@
-import React from "react";
-import styled from "styled-components";
 import { Container } from "react-bootstrap";
-import Navbar from "../components/Navbar";
+import styled from "styled-components";
 import Feeds from "../components/Feeds";
+import Navbar from "../components/Navbar";
 
 const LandingStyles = styled.div`
   background-color: rgb(245, 245, 248);

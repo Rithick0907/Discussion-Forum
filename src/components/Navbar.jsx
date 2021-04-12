@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import { Container, Form, Navbar } from "react-bootstrap";
+import styled from "styled-components";
 import Button from "./CustomButtons";
 
 const NavStyles = styled.div`

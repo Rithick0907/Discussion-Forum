@@ -1,9 +1,9 @@
-import styled from "styled-components";
 import { Col, Container, Form, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Navbar from "../components/Navbar";
-import Input from "../components/Input";
+import styled from "styled-components";
 import Button from "../components/CustomButtons";
+import Input from "../components/Input";
+import Navbar from "../components/Navbar";
 
 export const Styles = styled.div`
   background-color: rgb(245, 245, 248);

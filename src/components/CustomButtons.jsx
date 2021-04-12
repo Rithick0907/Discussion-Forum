@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import { Button } from "react-bootstrap";
+import styled from "styled-components";
 
 const StyledButton = styled(Button)`
   background-color: rgb(252, 67, 100);
