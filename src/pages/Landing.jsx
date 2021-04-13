@@ -4,7 +4,7 @@ import Feeds from "../components/Feeds";
 import Navbar from "../components/Navbar";
 
 const LandingStyles = styled.div`
-  background-color: rgb(245, 245, 248);
+  background-color: var(--bg-color-primary);
   width: 100%;
 
   & > .container {

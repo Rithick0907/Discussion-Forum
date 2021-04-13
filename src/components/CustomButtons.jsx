@@ -2,27 +2,32 @@ import { Button } from "react-bootstrap";
 import styled from "styled-components";
 
 const StyledButton = styled(Button)`
-  background-color: rgb(252, 67, 100);
-  border: 0;
+  background-color: var(--btn-color-primary);
   border-radius: 25px;
+  border: 0;
   font-size: 1.1rem;
   font-weight: bold;
   outline: none;
   padding: 16px 30px;
   text-align: center;
 
-  &:hover {
-    background-color: rgb(252, 42, 79);
+  &:active,
+  &:focus,
+  &:hover,
+  &:visited {
+    background-color: var(--btn-color-primary-hover);
+    border: 0;
+    outline: none;
   }
 `;
 
 const AnswerButton = styled(StyledButton)`
-  background-color: rgb(32, 189, 175);
+  background-color: var(--btn-color-secondary);
   margin-left: auto;
   padding: 10px 20px;
 
   &:hover {
-    background-color: rgb(36, 175, 162);
+    background-color: var(--btn-color-secondary-hover);
   }
 `;
 

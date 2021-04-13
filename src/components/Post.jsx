@@ -12,9 +12,9 @@ import styled from "styled-components";
 import Button from "./CustomButtons";
 
 const StyledCard = styled(Card)`
-  background-color: rgb(255, 255, 255);
+  background-color: var(--bg-color-secondary);
   border-radius: 5px;
-  color: gray;
+  color: var(--font-color);
   margin-bottom: 20px;
 
   & > .card-header {

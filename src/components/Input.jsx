@@ -18,11 +18,17 @@ const StyledInput = styled.div`
   }
 `;
 
-const Input = ({ children, type }) => (
+const Input = ({ handleChange, children, name, type, value }) => (
   <StyledInput>
     <Form.Group controlId={`formBasicEmail ${type}`}>
       <Form.Label>{children}</Form.Label>
-      <Form.Control autoComplete="off" type={type} />
+      <Form.Control
+        name={name}
+        value={value}
+        onChange={handleChange}
+        autoComplete="off"
+        type={type}
+      />
     </Form.Group>
   </StyledInput>
 );
