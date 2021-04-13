@@ -11,13 +11,18 @@ const StyledButton = styled(Button)`
   padding: 16px 30px;
   text-align: center;
 
-  &:active,
-  &:focus,
   &:hover,
-  &:visited {
+  &:focus {
     background-color: var(--btn-color-primary-hover);
     border: 0;
-    outline: none;
+    box-shadow: 0 0 2px var(--btn-color-primary);
+  }
+
+  &:active,
+  &:visited {
+    background-color: var(--btn-color-primary) !important;
+    box-shadow: none !important;
+    transition: 0.1s;
   }
 `;
 
@@ -26,20 +31,28 @@ const AnswerButton = styled(StyledButton)`
   margin-left: auto;
   padding: 10px 20px;
 
-  &:hover {
-    background-color: var(--btn-color-secondary-hover);
+  &:hover,
+  &:focus {
+    background-color: var(--btn-color-secondary);
+    border: 0;
+    box-shadow: none;
+  }
+
+  &:active,
+  &:visited {
+    background-color: var(--btn-color-secondary-hover) !important;
+    box-shadow: none !important;
+    transition: 0.1s;
   }
 `;
 
 const CustomButton = ({ children, answerButton }) => {
-  return (
-    <>
-      {answerButton ? (
-        <AnswerButton type="submit">{children}</AnswerButton>
-      ) : (
-        <StyledButton type="submit">{children}</StyledButton>
-      )}
-    </>
+  return answerButton ? (
+    <AnswerButton type="submit">{children}</AnswerButton>
+  ) : (
+    <StyledButton onClick={(e) => e.preventDefault()} type="submit">
+      {children}
+    </StyledButton>
   );
 };
 

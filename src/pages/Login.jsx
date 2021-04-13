@@ -70,8 +70,8 @@ export const StyledDiv = styled.div`
   a {
     color: inherit;
     text-decoration: none;
-    width: 100%;
   }
+
   .col-sm-10 a {
     color: var(--font-color);
     display: block;
@@ -84,7 +84,7 @@ export const StyledDiv = styled.div`
     margin: 20px 0;
   }
 
-  .col-sm-12 > svg {
+  .col-sm-12 svg {
     margin-right: 10px;
   }
 `;
@@ -141,13 +141,15 @@ class Login extends Component {
                 </Row>
                 <Row className="second-row">
                   <Col sm={12} md={6}>
-                    <AiOutlineMail size="2rem" />
-                    <Link to="/signup">Create an Account</Link>
+                    <Link to="/signup">
+                      <AiOutlineMail size="2rem" />
+                      <span>Create an Account</span>
+                    </Link>
                   </Col>
                   <Col sm={12} md={6}>
-                    <FcGoogle size="2rem" />
                     <Link onClick={signInWithGoogle} to="#">
-                      Log In with Google
+                      <FcGoogle size="2rem" />
+                      <span> Log In with Google</span>
                     </Link>
                   </Col>
                 </Row>
