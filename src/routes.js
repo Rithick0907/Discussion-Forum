@@ -1,4 +1,4 @@
-import Registration from "./pages/Registration";
+import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Landing from "./pages/Landing";
 
@@ -6,7 +6,7 @@ const routes = [
   {
     path: "/signup",
     name: "signup",
-    component: Registration,
+    component: Signup,
   },
   {
     path: "/login",

@@ -102,6 +102,11 @@ class Login extends Component {
     this.setState({ account });
   };
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { email, password } = this.state.account;
+  };
+
   render = () => {
     const { email, password } = this.state.account;
     return (
@@ -132,7 +137,7 @@ class Login extends Component {
                         Password
                       </Input>
                       <div className="text-center">
-                        <Button>Log In</Button>
+                        <Button onSubmit={this.handleSubmit}>Log In</Button>
                       </div>
                       <Link to="#">Forget Password?</Link>
                     </Form>

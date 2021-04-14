@@ -46,11 +46,13 @@ const AnswerButton = styled(StyledButton)`
   }
 `;
 
-const CustomButton = ({ children, answerButton }) => {
+const CustomButton = ({ children, answerButton, onSubmit }) => {
   return answerButton ? (
     <AnswerButton type="submit">{children}</AnswerButton>
   ) : (
-    <StyledButton type="submit">{children}</StyledButton>
+    <StyledButton onClick={onSubmit} type="submit">
+      {children}
+    </StyledButton>
   );
 };
 

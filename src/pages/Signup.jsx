@@ -9,7 +9,7 @@ import { StyledDiv } from "./Login";
 import Navbar from "../components/Navbar";
 import { signInWithGoogle } from "../service/firebase.utils";
 
-class Registration extends Component {
+class Signup extends Component {
   state = {
     account: {
       name: "",
@@ -23,6 +23,16 @@ class Registration extends Component {
     const account = { ...this.state.account };
     account[input.name] = input.value;
     this.setState({ account });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { name, email, createPassword, confirmPassword } = this.state.account;
+
+    if (createPassword !== confirmPassword) {
+      alert("Password doesn't match");
+      return;
+    }
   };
 
   render = () => {
@@ -77,7 +87,7 @@ class Registration extends Component {
                         </Col>
                       </Form.Row>
                       <div className="text-center">
-                        <Button>Sign Up</Button>
+                        <Button onSubmit={this.handleSubmit}>Sign Up</Button>
                       </div>
                     </Form>
                   </Col>
@@ -103,4 +113,4 @@ class Registration extends Component {
   };
 }
 
-export default Registration;
+export default Signup;
