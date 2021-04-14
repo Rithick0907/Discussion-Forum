@@ -1,4 +1,3 @@
-import { render } from "@testing-library/react";
 import { Component } from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
 import { AiOutlineMail } from "react-icons/ai";

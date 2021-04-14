@@ -1,4 +1,6 @@
-import { Container, Navbar } from "react-bootstrap";
+import { Container, Navbar, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { IoLogOutOutline } from "react-icons/io5";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Button from "./CustomButtons";
 
@@ -19,7 +21,15 @@ const StyledNavbar = styled(Navbar)`
   .navbar-brand img {
     margin: 4px 10px;
   }
+
+  .container a {
+    color: inherit;
+    cursor: pointer;
+    margin-left: 10px;
+  }
 `;
+
+const renderTooltip = (props) => <Tooltip {...props}>Logout</Tooltip>;
 
 const CustomNavbar = ({ addQuestion }) => (
   <StyledNavbar expand="lg">
@@ -33,7 +43,21 @@ const CustomNavbar = ({ addQuestion }) => (
         />
         Discussion Forum
       </Navbar.Brand>
-      {addQuestion && <Button>Add Question</Button>}
+      {addQuestion && (
+        <div>
+          <Button>Add Question</Button>
+          <NavLink to="/login">
+            <OverlayTrigger
+              placement="right"
+              delay={{ show: 250, hide: 400 }}
+              overlay={renderTooltip}
+              content="Logout"
+            >
+              <IoLogOutOutline size="3rem" />
+            </OverlayTrigger>
+          </NavLink>
+        </div>
+      )}
     </Container>
   </StyledNavbar>
 );

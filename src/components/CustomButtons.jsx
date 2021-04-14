@@ -50,9 +50,7 @@ const CustomButton = ({ children, answerButton }) => {
   return answerButton ? (
     <AnswerButton type="submit">{children}</AnswerButton>
   ) : (
-    <StyledButton onClick={(e) => e.preventDefault()} type="submit">
-      {children}
-    </StyledButton>
+    <StyledButton type="submit">{children}</StyledButton>
   );
 };
 
