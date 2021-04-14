@@ -1,8 +1,7 @@
-import { Container, Navbar, OverlayTrigger, Tooltip } from "react-bootstrap";
-import { IoLogOutOutline } from "react-icons/io5";
-import { NavLink } from "react-router-dom";
+import { Container, Navbar } from "react-bootstrap";
 import styled from "styled-components";
 import Button from "./CustomButtons";
+import Logout from "./Logout";
 
 const StyledNavbar = styled(Navbar)`
   background-color: var(--bg-color-secondary);
@@ -11,13 +10,16 @@ const StyledNavbar = styled(Navbar)`
   padding: 15px;
   width: 100%;
 
+  .container {
+    padding-left: 0;
+  }
   .navbar-brand {
     color: var(--font-color);
-    display: flex;
     font-size: 2.5rem;
     font-weight: 500px;
     text-align: center;
   }
+
   .navbar-brand img {
     margin: 4px 10px;
   }
@@ -28,8 +30,6 @@ const StyledNavbar = styled(Navbar)`
     margin-left: 10px;
   }
 `;
-
-const renderTooltip = (props) => <Tooltip {...props}>Logout</Tooltip>;
 
 const CustomNavbar = ({ addQuestion }) => (
   <StyledNavbar expand="lg">
@@ -46,16 +46,7 @@ const CustomNavbar = ({ addQuestion }) => (
       {addQuestion && (
         <div>
           <Button>Add Question</Button>
-          <NavLink to="/login">
-            <OverlayTrigger
-              placement="right"
-              delay={{ show: 250, hide: 400 }}
-              overlay={renderTooltip}
-              content="Logout"
-            >
-              <IoLogOutOutline size="3rem" />
-            </OverlayTrigger>
-          </NavLink>
+          <Logout />
         </div>
       )}
     </Container>
