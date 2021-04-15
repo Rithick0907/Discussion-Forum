@@ -7,10 +7,11 @@ const getRoutes = () =>
   ));
 
 const getProtectedRoutes = (user) =>
-  protectedRoutes.map((route) => {
+  protectedRoutes.map((route, index) => {
     const CustomComponent = route.component; //Because Component name always start with Uppercase.
     return (
       <Route
+        key={index}
         exact
         path={route.path}
         render={(props) =>
@@ -21,7 +22,7 @@ const getProtectedRoutes = (user) =>
   });
 
 const App = () => {
-  const user = null;
+  const user = 8;
   return (
     <Switch>
       {getRoutes()}

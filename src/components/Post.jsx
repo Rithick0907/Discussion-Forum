@@ -1,13 +1,5 @@
 import { Card } from "react-bootstrap";
-import {
-  MdAccountCircle,
-  MdArrowUpward,
-  MdArrowDownward,
-  MdChatBubbleOutline,
-  MdMoreHoriz,
-  MdRepeat,
-  MdShare,
-} from "react-icons/md";
+import { MdAccountCircle } from "react-icons/md";
 import styled from "styled-components";
 import Button from "./CustomButtons";
 
@@ -32,16 +24,6 @@ const StyledCard = styled(Card)`
     cursor: pointer;
     object-fit: contain;
     width: 100%;
-  }
-
-  .card-footer {
-    background-color: inherit;
-    display: flex;
-    justify-content: space-around;
-  }
-
-  .card-footer > svg {
-    cursor: pointer;
   }
 `;
 
@@ -70,14 +52,6 @@ const Post1 = () => (
         alt="TCS image"
       />
     </Card.Body>
-    <Card.Footer>
-      <MdArrowUpward size="3rem" />
-      <MdArrowDownward size="3rem" />
-      <MdChatBubbleOutline size="3rem" />
-      <MdMoreHoriz size="3rem" />
-      <MdRepeat size="3rem" />
-      <MdShare size="3rem" />
-    </Card.Footer>
   </StyledCard>
 );
 
