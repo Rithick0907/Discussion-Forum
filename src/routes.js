@@ -13,6 +13,9 @@ const routes = [
     name: "login",
     component: Login,
   },
+];
+
+export const protectedRoutes = [
   {
     path: "/main",
     name: "landing",
