@@ -20,7 +20,7 @@ const StyledInput = styled.div`
 
 const Input = ({ handleChange, children, name, type, value }) => (
   <StyledInput>
-    <Form.Group controlId={`formBasicEmail ${type}`}>
+    <Form.Group controlId={`formBasicEmail ${name}`}>
       <Form.Label>{children}</Form.Label>
       <Form.Control
         name={name}

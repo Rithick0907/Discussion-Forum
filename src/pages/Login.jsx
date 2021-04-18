@@ -7,7 +7,7 @@ import styled from "styled-components";
 import Button from "../components/CustomButtons";
 import Input from "../components/Input";
 import Navbar from "../components/Navbar";
-import { signInWithGoogle } from "../service/firebase.utils";
+import { auth, signInWithGoogle } from "../service/firebase.utils";
 
 export const StyledDiv = styled.div`
   background-color: var(--bg-color-primary);
@@ -89,12 +89,25 @@ export const StyledDiv = styled.div`
 `;
 
 class Login extends Component {
+  unsubscribeFromAuth = null;
+
   state = {
     account: {
       email: "",
       password: "",
     },
+    errors: {},
+    validated: false,
   };
+
+  componentDidMount = () => {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged((user) => {
+      this.props.setUser(user);
+      console.log(user);
+    });
+  };
+
+  componentWillUnmount = () => this.unsubscribeFromAuth();
 
   handleChange = ({ currentTarget: input }) => {
     const account = { ...this.state.account };
@@ -103,7 +116,6 @@ class Login extends Component {
   };
 
   handleSubmit = (e) => {
-    e.preventDefault();
     const { email, password } = this.state.account;
   };
 
@@ -119,7 +131,10 @@ class Login extends Component {
                 <h2>Log In to Forum</h2>
                 <Row>
                   <Col sm={{ offset: 1, span: 10 }}>
-                    <Form>
+                    <Form
+                      validated={this.state.validated}
+                      onSubmit={this.handleSubmit}
+                    >
                       <Input
                         name="email"
                         value={email}
@@ -137,7 +152,7 @@ class Login extends Component {
                         Password
                       </Input>
                       <div className="text-center">
-                        <Button onSubmit={this.handleSubmit}>Log In</Button>
+                        <Button>Log In</Button>
                       </div>
                       <Link to="#">Forget Password?</Link>
                     </Form>
