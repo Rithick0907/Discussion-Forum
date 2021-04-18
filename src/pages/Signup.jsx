@@ -7,7 +7,7 @@ import Button from "../components/CustomButtons";
 import Input from "../components/Input";
 import { StyledDiv } from "./Login";
 import Navbar from "../components/Navbar";
-import { signInWithGoogle } from "../service/firebase.utils";
+import { auth, signInWithGoogle } from "../service/firebase.utils";
 
 class Signup extends Component {
   state = {
@@ -25,7 +25,7 @@ class Signup extends Component {
     this.setState({ account });
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
     const { name, email, createPassword, confirmPassword } = this.state.account;
 
@@ -33,6 +33,17 @@ class Signup extends Component {
       alert("Password doesn't match");
       return;
     }
+    try {
+      const result = await auth.createUserWithEmailAndPassword(
+        email,
+        createPassword
+      );
+    } catch (err) {
+      alert(err.message);
+    }
+    const account = { ...this.state.account };
+    for (let key in account) account[key] = "";
+    this.setState({ account });
   };
 
   render = () => {
@@ -47,7 +58,7 @@ class Signup extends Component {
                 <h2>Sign Up to Forum</h2>
                 <Row>
                   <Col sm={{ offset: 1, span: 10 }}>
-                    <Form>
+                    <Form onSubmit={this.handleSubmit}>
                       <Input
                         name="name"
                         value={name}
@@ -87,7 +98,7 @@ class Signup extends Component {
                         </Col>
                       </Form.Row>
                       <div className="text-center">
-                        <Button onSubmit={this.handleSubmit}>Sign Up</Button>
+                        <Button>Sign Up</Button>
                       </div>
                     </Form>
                   </Col>

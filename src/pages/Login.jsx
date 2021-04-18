@@ -100,23 +100,23 @@ class Login extends Component {
     validated: false,
   };
 
-  componentDidMount = () => {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged((user) => {
-      this.props.setUser(user);
-      console.log(user);
-    });
-  };
-
-  componentWillUnmount = () => this.unsubscribeFromAuth();
-
   handleChange = ({ currentTarget: input }) => {
     const account = { ...this.state.account };
     account[input.name] = input.value;
     this.setState({ account });
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
+    e.preventDefault();
     const { email, password } = this.state.account;
+    try {
+      const result = await auth.signInWithEmailAndPassword(email, password);
+    } catch (err) {
+      alert(err.message);
+    }
+    const account = { ...this.state.account };
+    for (let key in account) account[key] = "";
+    this.setState({ account });
   };
 
   render = () => {
@@ -131,10 +131,7 @@ class Login extends Component {
                 <h2>Log In to Forum</h2>
                 <Row>
                   <Col sm={{ offset: 1, span: 10 }}>
-                    <Form
-                      validated={this.state.validated}
-                      onSubmit={this.handleSubmit}
-                    >
+                    <Form onSubmit={this.handleSubmit}>
                       <Input
                         name="email"
                         value={email}
@@ -180,4 +177,5 @@ class Login extends Component {
     );
   };
 }
+
 export default Login;

@@ -46,14 +46,15 @@ const AnswerButton = styled(StyledButton)`
   }
 `;
 
-const CustomButton = ({ children, answerButton, onSubmit }) => {
-  return answerButton ? (
-    <AnswerButton type="submit">{children}</AnswerButton>
+const CustomButton = ({ children, answerButton, onClick }) =>
+  answerButton ? (
+    <AnswerButton onClick={onClick} type="submit">
+      {children}
+    </AnswerButton>
   ) : (
-    <StyledButton onClick={onSubmit} type="submit">
+    <StyledButton onClick={onClick} type="submit">
       {children}
     </StyledButton>
   );
-};
 
 export default CustomButton;

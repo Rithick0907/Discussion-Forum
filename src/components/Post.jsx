@@ -32,27 +32,29 @@ const answer = `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto 
           illum corporis iste et? Numquam consequuntur fuga pariatur accusantium
           culpa suscipit atque, odio autem eos.`;
 
-const Post1 = () => (
-  <StyledCard>
-    <Card.Header>
-      <MdAccountCircle size="3rem" />
-      <h5 className="m-3">Username</h5>
-      <small className="ml-auto m-2">Timestamp</small>
-    </Card.Header>
-    <Card.Body>
-      <div className="post-question d-flex">
-        <p className="d-inline-block">{question}</p>
-        <Button answerButton>Answer</Button>
-      </div>
-      <div className="post-answer">
-        <p>{answer}</p>
-      </div>
-      <img
-        src="https://media.comicbook.com/2016/02/batman-v-superman-bvs-header-168595.png"
-        alt="TCS image"
-      />
-    </Card.Body>
-  </StyledCard>
-);
+const Post = () => {
+  return (
+    <StyledCard>
+      <Card.Header>
+        <MdAccountCircle size="3rem" />
+        <h5 className="m-3">Username</h5>
+        <small className="ml-auto m-2">Timestamp</small>
+      </Card.Header>
+      <Card.Body>
+        <div className="post-question d-flex">
+          <p className="d-inline-block">{question}</p>
+          <Button answerButton>Answer</Button>
+        </div>
+        <div className="post-answer">
+          <p>{answer}</p>
+        </div>
+        <img
+          src="https://media.comicbook.com/2016/02/batman-v-superman-bvs-header-168595.png"
+          alt="TCS image"
+        />
+      </Card.Body>
+    </StyledCard>
+  );
+};
 
-export default Post1;
+export default Post;

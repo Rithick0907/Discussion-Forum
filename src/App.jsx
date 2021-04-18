@@ -1,5 +1,9 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Switch, Route, Redirect } from "react-router-dom";
 import routes, { protectedRoutes } from "./routes";
+import { auth } from "./service/firebase.utils";
+import { login, logout, userSelector } from "./store/auth";
 
 const getRoutes = () =>
   routes.map((route, index) => (
@@ -22,7 +26,26 @@ const getProtectedRoutes = (user) =>
   });
 
 const App = () => {
-  const user = 8;
+  // const user = useSelector(userSelector);
+  const user = 10;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        dispatch(
+          login({
+            email: authUser.email,
+            name: authUser.displayName,
+            uid: authUser.uid,
+            photo: authUser.profileURL,
+          })
+        );
+        console.log(user);
+      } else dispatch(logout());
+    });
+  }, [dispatch]);
+
   return (
     <Switch>
       {getRoutes()}

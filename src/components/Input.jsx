@@ -1,7 +1,7 @@
 import { Form } from "react-bootstrap";
 import styled from "styled-components";
 
-const StyledInput = styled.div`
+export const StyledInput = styled.div`
   .form-label {
     display: inline-block;
     max-width: 100%;
@@ -18,16 +18,17 @@ const StyledInput = styled.div`
   }
 `;
 
-const Input = ({ handleChange, children, name, type, value }) => (
+const Input = ({ handleChange, children, name, placeholder, type, value }) => (
   <StyledInput>
     <Form.Group controlId={`formBasicEmail ${name}`}>
       <Form.Label>{children}</Form.Label>
       <Form.Control
-        name={name}
-        value={value}
-        onChange={handleChange}
         autoComplete="off"
+        name={name}
+        onChange={handleChange}
+        placeholder={placeholder}
         type={type}
+        value={value}
       />
     </Form.Group>
   </StyledInput>

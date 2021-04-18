@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { Container, Navbar } from "react-bootstrap";
 import styled from "styled-components";
 import Button from "./CustomButtons";
+import Modal from "./PopupModal";
 import Logout from "./Logout";
 
 const StyledNavbar = styled(Navbar)`
@@ -31,26 +33,35 @@ const StyledNavbar = styled(Navbar)`
   }
 `;
 
-const CustomNavbar = ({ addQuestion }) => (
-  <StyledNavbar expand="lg">
-    <Container>
-      <Navbar.Brand href="/login">
-        <img
-          src="/favicon.ico"
-          alt="Discussion Forum Logo"
-          width="25px"
-          height="25px"
-        />
-        Discussion Forum
-      </Navbar.Brand>
-      {addQuestion && (
-        <div>
-          <Button>Add Question</Button>
-          <Logout />
-        </div>
-      )}
-    </Container>
-  </StyledNavbar>
-);
+const CustomNavbar = ({ addQuestion }) => {
+  const [show, setShow] = useState(false);
+
+  const handleShow = () => setShow(true);
+
+  const handleClose = () => setShow(false);
+
+  return (
+    <StyledNavbar expand="lg">
+      <Container>
+        <Navbar.Brand href="/login">
+          <img
+            src="/favicon.ico"
+            alt="Discussion Forum Logo"
+            width="25px"
+            height="25px"
+          />
+          Discussion Forum
+        </Navbar.Brand>
+        {addQuestion && (
+          <div>
+            <Button onClick={handleShow}>Add Question</Button>
+            <Modal show={show} title="Add Question" onHide={handleClose} />
+            <Logout />
+          </div>
+        )}
+      </Container>
+    </StyledNavbar>
+  );
+};
 
 export default CustomNavbar;
