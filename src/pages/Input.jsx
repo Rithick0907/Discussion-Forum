@@ -1,7 +1,7 @@
 import { Row } from "react-bootstrap";
 import { Control, Errors } from "react-redux-form";
 import styled from "styled-components";
-import { errMsg } from "../validateRules";
+import validator, { errMsg } from "../validateRules";
 
 export const FormRow = styled(Row)`
   .form-label {
@@ -20,10 +20,16 @@ export const FormRow = styled(Row)`
   }
 `;
 
-const getErrorMsg = (validators) => {
+const getErrorMsg = (validatorList) => {
   let msg = {};
-  for (let rule in validators) msg[rule] = errMsg[rule];
+  validatorList.map((key) => (msg[key] = errMsg[key]));
   return msg;
+};
+
+const getValidators = (validatorList) => {
+  let validators = {};
+  validatorList.map((key) => (validators[key] = validator[key]));
+  return validators;
 };
 
 const Input = ({ htmlFor, name, type, validators }) => (
@@ -32,12 +38,13 @@ const Input = ({ htmlFor, name, type, validators }) => (
       {htmlFor}
     </label>
     <Control
+      autoComplete="off"
       type={type}
       model={`.${name}`}
       id={name}
       name={name}
       className="form-control"
-      validators={validators}
+      validators={getValidators(validators)}
     />
     <Errors
       className="text-danger"

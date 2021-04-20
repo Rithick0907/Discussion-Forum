@@ -1,11 +1,12 @@
 import { Component } from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
+import { LocalForm } from "react-redux-form";
 import { AiOutlineMail } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../components/CustomButtons";
-import Input from "../components/Input";
+import Input, { FormRow } from "./Input";
 import Navbar from "../components/Navbar";
 import { auth, signInWithGoogle } from "../service/firebase.utils";
 
@@ -88,97 +89,74 @@ export const StyledDiv = styled.div`
   }
 `;
 
-class Login extends Component {
-  unsubscribeFromAuth = null;
-
-  state = {
-    account: {
-      email: "",
-      password: "",
-    },
-    errors: {},
-    validated: false,
-  };
-
-  scheme = {};
-
-  handleChange = ({ currentTarget: input }) => {
-    const account = { ...this.state.account };
-    account[input.name] = input.value;
-    this.setState({ account });
-  };
-
-  handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const { email, password } = this.state.account;
+const Login = () => {
+  const handleSubmit = async (values) => {
+    console.log(values);
+    const { email, password } = values;
     try {
       const result = await auth.signInWithEmailAndPassword(email, password);
     } catch (err) {
       alert(err.message);
     }
-    const account = { ...this.state.account };
-    for (let key in account) account[key] = "";
-    this.setState({ account });
   };
 
-  render = () => {
-    const { email, password } = this.state.account;
-    return (
-      <StyledDiv>
-        <Navbar />
-        <Container>
-          <Row>
-            <Col sm={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
-              <div className="content-box">
-                <h2>Log In to Forum</h2>
-                <Row>
-                  <Col sm={{ offset: 1, span: 10 }}>
-                    <Form onSubmit={this.handleSubmit}>
+  return (
+    <StyledDiv>
+      <Navbar />
+      <Container>
+        <Row>
+          <Col sm={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
+            <div className="content-box">
+              <h2>Log In to Forum</h2>
+              <Row>
+                <Col sm={{ offset: 1, span: 10 }}>
+                  <LocalForm
+                    initialState={{ email: "", password: "" }}
+                    onSubmit={handleSubmit}
+                  >
+                    <FormRow className="form-group">
                       <Input
+                        htmlFor="Email"
                         name="email"
-                        value={email}
-                        handleChange={this.handleChange}
-                        type="email"
-                      >
-                        Email
-                      </Input>
+                        type="text"
+                        validators={["required", "validEmail"]}
+                      />
+                    </FormRow>
+                    <FormRow className="form-group">
                       <Input
+                        htmlFor="Password"
                         name="password"
-                        value={password}
-                        handleChange={this.handleChange}
                         type="password"
-                      >
-                        Password
-                      </Input>
-                      <div className="text-center">
-                        <Button>Log In</Button>
-                      </div>
-                      <Link to="#">Forget Password?</Link>
-                    </Form>
-                  </Col>
-                </Row>
-                <Row className="second-row">
-                  <Col sm={12} md={6}>
-                    <Link to="/signup">
-                      <AiOutlineMail size="2rem" />
-                      <span>Create an Account</span>
-                    </Link>
-                  </Col>
-                  <Col sm={12} md={6}>
-                    <Link onClick={signInWithGoogle} to="#">
-                      <FcGoogle size="2rem" />
-                      <span> Log In with Google</span>
-                    </Link>
-                  </Col>
-                </Row>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </StyledDiv>
-    );
-  };
-}
+                        validators={["required", "validPassword"]}
+                      />
+                    </FormRow>
+                    <div className="text-center">
+                      <Button>Log In</Button>
+                    </div>
+                    <Link to="#">Forget Password?</Link>
+                  </LocalForm>
+                </Col>
+              </Row>
+              <Row className="second-row">
+                <Col sm={12} md={6}>
+                  <Link to="/signup">
+                    <AiOutlineMail size="2rem" />
+                    <span>Create an Account</span>
+                  </Link>
+                </Col>
+                <Col sm={12} md={6}>
+                  <Link onClick={signInWithGoogle} to="#">
+                    <FcGoogle size="2rem" />
+                    <span> Log In with Google</span>
+                  </Link>
+                </Col>
+              </Row>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </StyledDiv>
+  );
+};
 
 export default Login;

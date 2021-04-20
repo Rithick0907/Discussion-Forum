@@ -1,9 +1,8 @@
-import { Col, Container, Form, Row } from "react-bootstrap";
-import { Control, Errors, LocalForm } from "react-redux-form";
+import { Col, Container, Row } from "react-bootstrap";
+import { LocalForm } from "react-redux-form";
 import { Link } from "react-router-dom";
 import { AiOutlineMail } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
-import styled from "styled-components";
 import Button from "../components/CustomButtons";
 import Input, { FormRow } from "./Input";
 import {
@@ -18,8 +17,23 @@ import Navbar from "../components/Navbar";
 import { auth, signInWithGoogle } from "../service/firebase.utils";
 
 const Signup = () => {
-  const handleSubmit = (values) => {
+  const handleSubmit = async (values) => {
     console.log(values);
+    const { email, createPassword, confirmPassword } = values;
+
+    if (createPassword !== confirmPassword) {
+      alert("Password doesn't match");
+      return;
+    }
+
+    try {
+      const result = await auth.createUserWithEmailAndPassword(
+        email,
+        createPassword
+      );
+    } catch (err) {
+      alert(err.message);
+    }
   };
 
   return (
@@ -46,19 +60,15 @@ const Signup = () => {
                         htmlFor="Name"
                         name="name"
                         type="text"
-                        validators={{
-                          required,
-                          minLength: minLength(3),
-                          maxLength: maxLength(20),
-                        }}
+                        validators={["required", "minLength", "maxLength"]}
                       />
                     </FormRow>
                     <FormRow className="form-group">
                       <Input
                         htmlFor="Email"
                         name="email"
-                        type="email"
-                        validators={{ required, validEmail }}
+                        type="text"
+                        validators={["required", "validEmail"]}
                       />
                     </FormRow>
                     <FormRow className="form-group">
@@ -67,7 +77,7 @@ const Signup = () => {
                           htmlFor="Create Password"
                           name="createPassword"
                           type="password"
-                          validators={{ required, validPassword }}
+                          validators={["required", "validPassword"]}
                         />
                       </Col>
                       <Col className="pr-0">
@@ -75,7 +85,7 @@ const Signup = () => {
                           htmlFor="Confirm Password"
                           name="confirmPassword"
                           type="password"
-                          validators={{ required, validPassword }}
+                          validators={["required", "validPassword"]}
                         />
                       </Col>
                     </FormRow>
