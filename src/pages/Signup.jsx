@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { AiOutlineMail } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import Button from "../components/CustomButtons";
-import Input, { FormRow } from "./Input";
+import Input, { FormRow } from "../components/Input";
 import {
   required,
   maxLength,
@@ -18,7 +18,6 @@ import { auth, signInWithGoogle } from "../service/firebase.utils";
 
 const Signup = () => {
   const handleSubmit = async (values) => {
-    console.log(values);
     const { email, createPassword, confirmPassword } = values;
 
     if (createPassword !== confirmPassword) {

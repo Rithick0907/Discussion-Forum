@@ -1,12 +1,11 @@
-import { Component } from "react";
-import { Col, Container, Form, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import { LocalForm } from "react-redux-form";
 import { AiOutlineMail } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../components/CustomButtons";
-import Input, { FormRow } from "./Input";
+import Input, { FormRow } from "../components/Input";
 import Navbar from "../components/Navbar";
 import { auth, signInWithGoogle } from "../service/firebase.utils";
 
@@ -91,7 +90,6 @@ export const StyledDiv = styled.div`
 
 const Login = () => {
   const handleSubmit = async (values) => {
-    console.log(values);
     const { email, password } = values;
     try {
       const result = await auth.signInWithEmailAndPassword(email, password);

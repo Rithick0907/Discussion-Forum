@@ -1,7 +1,9 @@
-import { Form } from "react-bootstrap";
+import { Row } from "react-bootstrap";
+import { Control, Errors } from "react-redux-form";
 import styled from "styled-components";
+import validator, { errMsg } from "../validateRules";
 
-export const StyledInput = styled.div`
+export const FormRow = styled(Row)`
   .form-label {
     display: inline-block;
     max-width: 100%;
@@ -18,20 +20,39 @@ export const StyledInput = styled.div`
   }
 `;
 
-const Input = ({ handleChange, children, name, placeholder, type, value }) => (
-  <StyledInput>
-    <Form.Group controlId={`formBasicEmail ${name}`}>
-      <Form.Label>{children}</Form.Label>
-      <Form.Control
-        autoComplete="off"
-        name={name}
-        onChange={handleChange}
-        placeholder={placeholder}
-        type={type}
-        value={value}
-      />
-    </Form.Group>
-  </StyledInput>
+const getErrorMsg = (validatorList) => {
+  let msg = {};
+  validatorList.map((key) => (msg[key] = errMsg[key]));
+  return msg;
+};
+
+const getValidators = (validatorList) => {
+  let validators = {};
+  validatorList.map((key) => (validators[key] = validator[key]));
+  return validators;
+};
+
+const Input = ({ htmlFor, name, type, validators }) => (
+  <>
+    <label className="form-label" htmlFor={name}>
+      {htmlFor}
+    </label>
+    <Control
+      autoComplete="off"
+      type={type}
+      model={`.${name}`}
+      id={name}
+      name={name}
+      className="form-control"
+      validators={getValidators(validators)}
+    />
+    <Errors
+      className="text-danger"
+      model={`.${name}`}
+      show="touched"
+      messages={getErrorMsg(validators)}
+    />
+  </>
 );
 
 export default Input;
