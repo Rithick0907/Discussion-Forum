@@ -100,6 +100,8 @@ class Login extends Component {
     validated: false,
   };
 
+  scheme = {};
+
   handleChange = ({ currentTarget: input }) => {
     const account = { ...this.state.account };
     account[input.name] = input.value;
@@ -108,6 +110,7 @@ class Login extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
+
     const { email, password } = this.state.account;
     try {
       const result = await auth.signInWithEmailAndPassword(email, password);

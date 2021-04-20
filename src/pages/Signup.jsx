@@ -1,127 +1,108 @@
-import { Component } from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
+import { Control, Errors, LocalForm } from "react-redux-form";
 import { Link } from "react-router-dom";
 import { AiOutlineMail } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
+import styled from "styled-components";
 import Button from "../components/CustomButtons";
-import Input from "../components/Input";
+import Input, { FormRow } from "./Input";
+import {
+  required,
+  maxLength,
+  minLength,
+  validEmail,
+  validPassword,
+} from "../validateRules";
 import { StyledDiv } from "./Login";
 import Navbar from "../components/Navbar";
 import { auth, signInWithGoogle } from "../service/firebase.utils";
 
-class Signup extends Component {
-  state = {
-    account: {
-      name: "",
-      email: "",
-      createPassword: "",
-      confirmPassword: "",
-    },
+const Signup = () => {
+  const handleSubmit = (values) => {
+    console.log(values);
   };
 
-  handleChange = ({ currentTarget: input }) => {
-    const account = { ...this.state.account };
-    account[input.name] = input.value;
-    this.setState({ account });
-  };
-
-  handleSubmit = async (e) => {
-    e.preventDefault();
-    const { name, email, createPassword, confirmPassword } = this.state.account;
-
-    if (createPassword !== confirmPassword) {
-      alert("Password doesn't match");
-      return;
-    }
-    try {
-      const result = await auth.createUserWithEmailAndPassword(
-        email,
-        createPassword
-      );
-    } catch (err) {
-      alert(err.message);
-    }
-    const account = { ...this.state.account };
-    for (let key in account) account[key] = "";
-    this.setState({ account });
-  };
-
-  render = () => {
-    const { name, email, createPassword, confirmPassword } = this.state.account;
-    return (
-      <StyledDiv>
-        <Navbar />
-        <Container>
-          <Row>
-            <Col sm={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
-              <div className="content-box">
-                <h2>Sign Up to Forum</h2>
-                <Row>
-                  <Col sm={{ offset: 1, span: 10 }}>
-                    <Form onSubmit={this.handleSubmit}>
+  return (
+    <StyledDiv>
+      <Navbar />
+      <Container>
+        <Row>
+          <Col sm={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
+            <div className="content-box">
+              <h2>Sign Up to Forum</h2>
+              <Row>
+                <Col sm={{ offset: 1, span: 10 }}>
+                  <LocalForm
+                    initialState={{
+                      name: "",
+                      email: "",
+                      createPassword: "",
+                      confirmPassword: "",
+                    }}
+                    onSubmit={(values) => handleSubmit(values)}
+                  >
+                    <FormRow className="form-group">
                       <Input
+                        htmlFor="Name"
                         name="name"
-                        value={name}
-                        handleChange={this.handleChange}
                         type="text"
-                      >
-                        Name
-                      </Input>
+                        validators={{
+                          required,
+                          minLength: minLength(3),
+                          maxLength: maxLength(20),
+                        }}
+                      />
+                    </FormRow>
+                    <FormRow className="form-group">
                       <Input
+                        htmlFor="Email"
                         name="email"
-                        value={email}
-                        handleChange={this.handleChange}
                         type="email"
-                      >
-                        Email
-                      </Input>
-                      <Form.Row>
-                        <Col>
-                          <Input
-                            name="createPassword"
-                            value={createPassword}
-                            handleChange={this.handleChange}
-                            type="password"
-                          >
-                            Create Password
-                          </Input>
-                        </Col>
-                        <Col>
-                          <Input
-                            name="confirmPassword"
-                            value={confirmPassword}
-                            handleChange={this.handleChange}
-                            type="password"
-                          >
-                            Confirm Password
-                          </Input>
-                        </Col>
-                      </Form.Row>
-                      <div className="text-center">
-                        <Button>Sign Up</Button>
-                      </div>
-                    </Form>
-                  </Col>
-                </Row>
-                <Row className="second-row">
-                  <Col sm={12} md={6}>
-                    <AiOutlineMail size="2rem" />
-                    <Link to="/login">Log In With Email</Link>
-                  </Col>
-                  <Col sm={12} md={6}>
-                    <FcGoogle size="2rem" />
-                    <Link onClick={signInWithGoogle} to="#Y">
-                      Log In with Google
-                    </Link>
-                  </Col>
-                </Row>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </StyledDiv>
-    );
-  };
-}
+                        validators={{ required, validEmail }}
+                      />
+                    </FormRow>
+                    <FormRow className="form-group">
+                      <Col className="pl-0">
+                        <Input
+                          htmlFor="Create Password"
+                          name="createPassword"
+                          type="password"
+                          validators={{ required, validPassword }}
+                        />
+                      </Col>
+                      <Col className="pr-0">
+                        <Input
+                          htmlFor="Confirm Password"
+                          name="confirmPassword"
+                          type="password"
+                          validators={{ required, validPassword }}
+                        />
+                      </Col>
+                    </FormRow>
+                    <div className="text-center">
+                      <Button>Sign Up</Button>
+                    </div>
+                  </LocalForm>
+                </Col>
+              </Row>
+              <Row className="second-row">
+                <Col sm={12} md={6}>
+                  <AiOutlineMail size="2rem" />
+                  <Link to="/login">Log In With Email</Link>
+                </Col>
+                <Col sm={12} md={6}>
+                  <FcGoogle size="2rem" />
+                  <Link onClick={signInWithGoogle} to="#Y">
+                    Log In with Google
+                  </Link>
+                </Col>
+              </Row>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </StyledDiv>
+  );
+};
 
 export default Signup;
