@@ -8,19 +8,15 @@ import Button from "./CustomButtons";
 import firebase, { firestore } from "../service/firebase.utils";
 import { userSelector } from "../store/auth";
 
-const StyledModal = styled(Modal)`
+export const StyledModal = styled(Modal)`
   font-size: 1.7rem;
 
   span {
     margin-left: 10px;
   }
 
-  .modal-body {
-    margin-bottom: 150px;
-    padding: 10px 20px;
-  }
-
-  .form-control {
+  .form-control[type="text"],
+  .form-control[type="url"] {
     border: 0;
     border-bottom: 1px solid gray;
     padding: 5px;
@@ -51,7 +47,7 @@ const StyledModal = styled(Modal)`
   }
 `;
 
-const PopupModel = ({ title, show, onHide }) => {
+const QuestionModal = ({ title, show, onHide }) => {
   const [question, setQuestion] = useState("");
   const [link, setLink] = useState("");
   const user = useSelector(userSelector);
@@ -74,7 +70,7 @@ const PopupModel = ({ title, show, onHide }) => {
       <Modal.Header closeButton>
         <Modal.Title>{title}</Modal.Title>
       </Modal.Header>
-      <Modal.Body>
+      <Modal.Body className="mb-5 px-4 py-5">
         <Avatar src={user.photo} size="4rem" />
         <span>{user.email}</span>
         <Form>
@@ -111,4 +107,4 @@ const PopupModel = ({ title, show, onHide }) => {
   );
 };
 
-export default PopupModel;
+export default QuestionModal;

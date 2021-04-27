@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { Card } from "react-bootstrap";
 import styled from "styled-components";
 import Avatar from "./Avatar";
 import Button from "./CustomButtons";
+import Modal from "./AnswerModal";
 
 const StyledCard = styled(Card)`
   background-color: var(--bg-color-secondary);
@@ -34,6 +36,11 @@ const answer = `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto 
 const Post = ({ id, question, image, timestamp, user }) => {
   let profilePhoto = user.photo ? user.photo : "";
   let profileName = user.name ? user.name : user.email;
+  const [show, setShow] = useState(false);
+
+  const handleShow = () => setShow(true);
+
+  const handleClose = () => setShow(false);
 
   return (
     <StyledCard>
@@ -47,11 +54,12 @@ const Post = ({ id, question, image, timestamp, user }) => {
       <Card.Body>
         <div className="post-question d-flex">
           <p className="d-inline-block">{question}</p>
-          <Button answerButton>Answer</Button>
+          <Button onClick={handleShow} answerButton>
+            Answer
+          </Button>
+          <Modal show={show} title="Question" onHide={handleClose} />
         </div>
-        <div className="post-answer">
-          <p>{answer}</p>
-        </div>
+
         <img src={image} alt="TCS image" />
       </Card.Body>
     </StyledCard>
