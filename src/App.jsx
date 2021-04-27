@@ -41,7 +41,6 @@ const App = () => {
             photo: authUser.photoURL,
           })
         );
-        console.log(user);
       } else dispatch(logout());
     });
   }, [dispatch]);
