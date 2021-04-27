@@ -38,7 +38,7 @@ const App = () => {
             email: authUser.email,
             name: authUser.displayName,
             uid: authUser.uid,
-            photo: authUser.profileURL,
+            photo: authUser.photoURL,
           })
         );
         console.log(user);

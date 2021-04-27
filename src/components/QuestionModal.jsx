@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { Form, InputGroup, Modal } from "react-bootstrap";
 import { BsLink45Deg } from "react-icons/bs";
-import { MdAccountCircle } from "react-icons/md";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
-import Button from "../components/CustomButtons";
+import Avatar from "./Avatar";
+import Button from "./CustomButtons";
+import firebase, { firestore } from "../service/firebase.utils";
+import { userSelector } from "../store/auth";
 
 const StyledModal = styled(Modal)`
   font-size: 1.7rem;
@@ -51,15 +54,29 @@ const StyledModal = styled(Modal)`
 const PopupModel = ({ title, show, onHide }) => {
   const [question, setQuestion] = useState("");
   const [link, setLink] = useState("");
+  const user = useSelector(userSelector);
 
+  const handleQuestion = (e) => {
+    e.preventDefault();
+    onHide();
+    firestore.collection("questions").add({
+      user,
+      question,
+      imageURL: link,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(), //Add Timestamp after question posted to firebase
+    });
+
+    setQuestion("");
+    setLink("");
+  };
   return (
     <StyledModal centered size="lg" show={show} onHide={onHide}>
       <Modal.Header closeButton>
         <Modal.Title>{title}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <MdAccountCircle size="3rem" />
-        <span>email id</span>
+        <Avatar src={user.photo} size="4rem" />
+        <span>{user.email}</span>
         <Form>
           <Form.Control
             autoComplete="off"
@@ -86,7 +103,7 @@ const PopupModel = ({ title, show, onHide }) => {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button answerButton onClick={onHide}>
+        <Button answerButton onClick={handleQuestion}>
           Add Question
         </Button>
       </Modal.Footer>

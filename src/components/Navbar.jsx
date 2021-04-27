@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Container, Navbar } from "react-bootstrap";
 import styled from "styled-components";
 import Button from "./CustomButtons";
-import Modal from "./PopupModal";
+import Modal from "./QuestionModal";
 import Logout from "./Logout";
 
 const StyledNavbar = styled(Navbar)`

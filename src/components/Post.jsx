@@ -1,6 +1,6 @@
 import { Card } from "react-bootstrap";
-import { MdAccountCircle } from "react-icons/md";
 import styled from "styled-components";
+import Avatar from "./Avatar";
 import Button from "./CustomButtons";
 
 const StyledCard = styled(Card)`
@@ -27,18 +27,22 @@ const StyledCard = styled(Card)`
   }
 `;
 
-const question = "What is this meant by store in Redux?";
 const answer = `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto sint
           illum corporis iste et? Numquam consequuntur fuga pariatur accusantium
           culpa suscipit atque, odio autem eos.`;
 
-const Post = () => {
+const Post = ({ id, question, image, timestamp, user }) => {
+  let profilePhoto = user.photo ? user.photo : "";
+  let profileName = user.name ? user.name : user.email;
+
   return (
     <StyledCard>
       <Card.Header>
-        <MdAccountCircle size="3rem" />
-        <h5 className="m-3">Username</h5>
-        <small className="ml-auto m-2">Timestamp</small>
+        <Avatar src={profilePhoto} size="3rem" />
+        <h5 className="m-3">{profileName}</h5>
+        <small className="mt-3">
+          {new Date(timestamp?.toDate()).toLocaleString()}
+        </small>
       </Card.Header>
       <Card.Body>
         <div className="post-question d-flex">
@@ -48,10 +52,7 @@ const Post = () => {
         <div className="post-answer">
           <p>{answer}</p>
         </div>
-        <img
-          src="https://media.comicbook.com/2016/02/batman-v-superman-bvs-header-168595.png"
-          alt="TCS image"
-        />
+        <img src={image} alt="TCS image" />
       </Card.Body>
     </StyledCard>
   );
