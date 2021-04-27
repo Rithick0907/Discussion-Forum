@@ -1,6 +1,6 @@
 import { Col, Container, Row } from "react-bootstrap";
 import { LocalForm } from "react-redux-form";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { AiOutlineMail } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import Button from "../components/CustomButtons";
@@ -17,6 +17,7 @@ import Navbar from "../components/Navbar";
 import { auth, signInWithGoogle } from "../service/firebase.utils";
 
 const Signup = () => {
+  const history = useHistory();
   const handleSubmit = async (values) => {
     const { email, createPassword, confirmPassword } = values;
 
@@ -26,10 +27,8 @@ const Signup = () => {
     }
 
     try {
-      const result = await auth.createUserWithEmailAndPassword(
-        email,
-        createPassword
-      );
+      await auth.createUserWithEmailAndPassword(email, createPassword);
+      history.push("/main");
     } catch (err) {
       alert(err.message);
     }

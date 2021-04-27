@@ -2,7 +2,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { LocalForm } from "react-redux-form";
 import { AiOutlineMail } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../components/CustomButtons";
 import Input, { FormRow } from "../components/Input";
@@ -89,10 +89,13 @@ export const StyledDiv = styled.div`
 `;
 
 const Login = () => {
+  const history = useHistory();
+
   const handleSubmit = async (values) => {
     const { email, password } = values;
     try {
-      const result = await auth.signInWithEmailAndPassword(email, password);
+      await auth.signInWithEmailAndPassword(email, password);
+      history.push("/main");
     } catch (err) {
       alert(err.message);
     }

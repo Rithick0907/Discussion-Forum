@@ -1,12 +1,13 @@
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { IoLogOutOutline } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
+import { auth } from "../service/firebase.utils";
 
 const renderTooltip = (props) => <Tooltip {...props}>Logout</Tooltip>;
 
 const Logout = () => {
   return (
-    <NavLink to="/login">
+    <NavLink onClick={() => auth.signOut()} to="/login">
       <OverlayTrigger
         placement="right"
         delay={{ show: 250, hide: 400 }}
