@@ -35,7 +35,6 @@ export const StyledDiv = styled.div`
     padding-bottom: 22px;
     text-align: center;
   }
-
   .row {
     height: 100%;
   }
@@ -44,6 +43,10 @@ export const StyledDiv = styled.div`
     display: flex;
     height: inherit;
     align-items: center;
+  }
+
+  .first-row {
+    margin-bottom: 40px;
   }
 
   .second-row {
@@ -74,7 +77,7 @@ export const StyledDiv = styled.div`
   .col-sm-10 a {
     color: var(--font-color);
     display: block;
-    margin: 30px 0;
+    margin-top: 20px;
     text-align: center;
     text-decoration: underline;
   }
@@ -109,7 +112,7 @@ const Login = () => {
           <Col sm={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
             <div className="content-box">
               <h2>Log In to Forum</h2>
-              <Row>
+              <Row className="first-row">
                 <Col sm={{ offset: 1, span: 10 }}>
                   <LocalForm
                     initialState={{ email: "", password: "" }}
@@ -134,7 +137,7 @@ const Login = () => {
                     <div className="text-center">
                       <Button>Log In</Button>
                     </div>
-                    <Link to="#">Forget Password?</Link>
+                    <Link to="/forgetPassword">Forget Password?</Link>
                   </LocalForm>
                 </Col>
               </Row>

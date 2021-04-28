@@ -5,13 +5,6 @@ import { AiOutlineMail } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import Button from "../components/CustomButtons";
 import Input, { FormRow } from "../components/Input";
-import {
-  required,
-  maxLength,
-  minLength,
-  validEmail,
-  validPassword,
-} from "../validateRules";
 import { StyledDiv } from "./Login";
 import Navbar from "../components/Navbar";
 import { auth, signInWithGoogle } from "../service/firebase.utils";
@@ -42,7 +35,7 @@ const Signup = () => {
           <Col sm={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
             <div className="content-box">
               <h2>Sign Up to Forum</h2>
-              <Row>
+              <Row className="first-row">
                 <Col sm={{ offset: 1, span: 10 }}>
                   <LocalForm
                     initialState={{
