@@ -149,7 +149,7 @@ const Login = () => {
                   </Link>
                 </Col>
                 <Col sm={12} md={6}>
-                  <Link onClick={signInWithGoogle} to="#">
+                  <Link onClick={() => signInWithGoogle(history)}>
                     <FcGoogle size="2rem" />
                     <span> Log In with Google</span>
                   </Link>
