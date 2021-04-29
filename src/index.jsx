@@ -17,7 +17,7 @@ ReactDOM.render(
     <React.StrictMode>
       <BrowserRouter>
         <PersistGate persistor={persistor}>
-          <ToastContainer />
+          <ToastContainer style={{ fontSize: "1.5rem" }} />
           <App />
         </PersistGate>
       </BrowserRouter>
