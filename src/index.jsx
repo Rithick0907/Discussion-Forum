@@ -3,9 +3,12 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { PersistGate } from "redux-persist/integration/react";
+import { ToastContainer } from "react-toastify";
 import App from "./App";
 import store, { persistor } from "./store/configureStore";
+
 import "bootstrap/dist/css/bootstrap.min.css";
+import "react-toastify/dist/ReactToastify.css";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 
@@ -14,6 +17,7 @@ ReactDOM.render(
     <React.StrictMode>
       <BrowserRouter>
         <PersistGate persistor={persistor}>
+          <ToastContainer />
           <App />
         </PersistGate>
       </BrowserRouter>

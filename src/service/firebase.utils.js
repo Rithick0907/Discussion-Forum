@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
+import { toast } from "react-toastify";
 
 const config = {
   apiKey: "AIzaSyCVEi2PcdXWGKdlTUk7e5itaZ8a777gIpI",
@@ -24,7 +25,7 @@ export const signInWithGoogle = async (history) => {
     await auth.signInWithPopup(provider);
     history.push("/main");
   } catch (e) {
-    alert(e.message);
+    toast.error(e.message);
   }
 };
 export default firebase;

@@ -25,6 +25,17 @@ const StyledCard = styled(Card)`
     text-decoration: underline;
   }
 
+  .post__answer {
+    margin: 10px 0;
+    padding: 0 10px;
+  }
+
+  .post__answer span {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
   .card-body > img {
     cursor: pointer;
     object-fit: contain;
@@ -102,20 +113,9 @@ const Post = ({ id: Id, question, image, timestamp, user }) => {
                 <span>
                   {answers.answer}
                   <br />
-                  <span
-                    style={{
-                      position: "absolute",
-                      color: "gray",
-                      fontSize: "small",
-                      display: "flex",
-                      right: "0px",
-                    }}
-                  >
+                  <span>
                     <span style={{ color: "#b92b27" }}>
-                      {answers.user.displayName
-                        ? answers.user.displayName
-                        : answers.user.email}{" "}
-                      on{" "}
+                      {answers.user.email} on{" "}
                       {new Date(answers.timestamp?.toDate()).toLocaleString()}
                     </span>
                   </span>

@@ -4,6 +4,7 @@ import { AiOutlineMail } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { useHistory, Link } from "react-router-dom";
 import styled from "styled-components";
+import { toast } from "react-toastify";
 import Button from "../components/CustomButtons";
 import Input, { FormRow } from "../components/Input";
 import Navbar from "../components/Navbar";
@@ -100,7 +101,7 @@ const Login = () => {
       await auth.signInWithEmailAndPassword(email, password);
       history.push("/main");
     } catch (err) {
-      alert(err.message);
+      toast.error(err.message);
     }
   };
 

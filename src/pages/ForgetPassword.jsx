@@ -3,6 +3,7 @@ import { LocalForm } from "react-redux-form";
 import { AiOutlineMail } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { useHistory, Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { StyledDiv } from "./Login";
 import Button from "../components/CustomButtons";
 import Input, { FormRow } from "../components/Input";
@@ -15,10 +16,10 @@ const ForgetPassword = () => {
   const handleResetPassword = async ({ email }) => {
     try {
       await auth.sendPasswordResetEmail(email);
-      alert("Check your mail for Reset Password Link");
+      toast("Check your mail for Reset Password Link");
       history.replace("/login");
     } catch (e) {
-      alert(e.message);
+      toast.error(e.message);
     }
   };
 

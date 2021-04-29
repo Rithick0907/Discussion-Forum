@@ -3,6 +3,7 @@ import { LocalForm } from "react-redux-form";
 import { Link, useHistory } from "react-router-dom";
 import { AiOutlineMail } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
+import { toast } from "react-toastify";
 import Button from "../components/CustomButtons";
 import Input, { FormRow } from "../components/Input";
 import { StyledDiv } from "./Login";
@@ -15,7 +16,7 @@ const Signup = () => {
     const { email, createPassword, confirmPassword } = values;
 
     if (createPassword !== confirmPassword) {
-      alert("Password doesn't match");
+      toast.error("Password doesn't match");
       return;
     }
 
@@ -23,7 +24,7 @@ const Signup = () => {
       await auth.createUserWithEmailAndPassword(email, createPassword);
       history.push("/main");
     } catch (err) {
-      alert(err.message);
+      toast.error(err.message);
     }
   };
 
