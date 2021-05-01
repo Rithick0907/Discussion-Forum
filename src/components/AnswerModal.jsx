@@ -3,7 +3,7 @@ import { Form, Modal } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import firebase, { firestore } from "../service/firebase.utils";
 import { userSelector } from "../store/auth";
-import { selectQuestionId, selectQuestionName } from "../store/questionSlice";
+import { selectQuestionId } from "../store/questionSlice";
 import Button from "./CustomButtons";
 import { StyledModal } from "./QuestionModal";
 

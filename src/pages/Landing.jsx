@@ -10,6 +10,7 @@ const LandingStyles = styled.div`
   & > .container {
     font-size: 1.5rem;
     padding: 4rem 0;
+    min-height: 89vh;
   }
 `;
 

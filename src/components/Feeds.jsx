@@ -1,35 +1,55 @@
-import { useEffect, useState } from "react";
-import Post from "./Post";
+import { useEffect } from "react";
+import { Spinner } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { useSpring, animated } from "react-spring";
 import { firestore } from "../service/firebase.utils";
+import { addPosts, postSelector, loaderSelector } from "../store/postSlice";
+import Post from "./Post";
 
 const Feeds = () => {
-  const [posts, setPosts] = useState([]);
+  const posts = useSelector(postSelector);
+  const loader = useSelector(loaderSelector);
+  const dispatch = useDispatch();
+  const fade = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+  });
+
   useEffect(() => {
     firestore
       .collection("questions")
       .orderBy("timestamp", "desc")
-      .onSnapshot((reference) =>
-        setPosts(
-          reference.docs.map((doc) => ({
-            id: doc.id,
-            question: doc.data(),
-          }))
-        )
-      );
+      .onSnapshot((reference) => {
+        dispatch(
+          addPosts({
+            posts: reference.docs.map((doc) => ({
+              id: doc.id,
+              question: doc.data(),
+            })),
+          })
+        );
+      });
   }, []);
 
   return (
     <>
-      {posts.map(({ id, question }) => (
-        <Post
-          key={id}
-          id={id}
-          image={question.imageURL}
-          question={question.question}
-          timestamp={question.timestamp}
-          user={question.user}
-        />
-      ))}
+      {loader ? (
+        <div className="text-center">
+          <Spinner animation="border" />
+        </div>
+      ) : (
+        posts.map(({ id, question }) => (
+          <animated.div key={id} style={fade}>
+            <Post
+              id={id}
+              image={question.imageURL}
+              question={question.question}
+              timestamp={question.timestamp}
+              user={question.user}
+            />
+          </animated.div>
+        ))
+      )}
     </>
   );
 };

@@ -25,6 +25,7 @@ const StyledButton = styled(Button)`
     transition: 0.1s;
   }
   @media (max-width: 550px) {
+    font-size: 0.9rem;
     padding: 10px 15px;
   }
 `;

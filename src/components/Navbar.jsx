@@ -22,8 +22,10 @@ const StyledNavbar = styled(Navbar)`
     text-align: center;
   }
 
-  .navbar-brand img {
+  .navbar-brand > img {
     margin: 4px 10px;
+    width: 25px;
+    height: 25px;
   }
 
   .container a {
@@ -35,6 +37,10 @@ const StyledNavbar = styled(Navbar)`
   @media (max-width: 550px) {
     .navbar-brand {
       font-size: 1.5rem;
+    }
+    .navbar-brand > img {
+      width: 20px;
+      height: 20px;
     }
   }
 `;
@@ -50,12 +56,7 @@ const CustomNavbar = ({ addQuestion }) => {
     <StyledNavbar expand="lg">
       <Container>
         <Navbar.Brand href="/login">
-          <img
-            src="/favicon.ico"
-            alt="Discussion Forum Logo"
-            width="25px"
-            height="25px"
-          />
+          <img src="/favicon.ico" alt="Discussion Forum Logo" />
           Discussion Forum
         </Navbar.Brand>
         {addQuestion && (

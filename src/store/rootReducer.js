@@ -4,6 +4,7 @@ import storage from "redux-persist/lib/storage";
 
 import userReducer from "./auth";
 import questionReducer from "./questionSlice";
+import postReducer from "./postSlice";
 
 const persistConfig = {
   key: "root",
@@ -14,6 +15,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   user: userReducer,
   question: questionReducer,
+  post: postReducer,
 });
 
 export default persistReducer(persistConfig, rootReducer);

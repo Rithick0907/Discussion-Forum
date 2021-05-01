@@ -72,8 +72,6 @@ const Post = ({ id: Id, question, image, timestamp, user }) => {
 
   const handleClose = () => setShow(false);
 
-  console.log(getAnswers);
-
   return (
     <StyledCard
       onClick={() =>
