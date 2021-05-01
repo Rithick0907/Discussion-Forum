@@ -12,7 +12,7 @@ import { auth, signInWithGoogle } from "../service/firebase.utils";
 
 export const StyledDiv = styled.div`
   background-color: var(--bg-color-primary);
-  min-height: 700px;
+  min-height: 754px;
   height: 100vh;
 
   .container {

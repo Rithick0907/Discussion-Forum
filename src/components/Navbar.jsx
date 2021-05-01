@@ -31,6 +31,12 @@ const StyledNavbar = styled(Navbar)`
     cursor: pointer;
     margin-left: 10px;
   }
+
+  @media (max-width: 550px) {
+    .navbar-brand {
+      font-size: 1.5rem;
+    }
+  }
 `;
 
 const CustomNavbar = ({ addQuestion }) => {

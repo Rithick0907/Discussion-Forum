@@ -24,6 +24,9 @@ const StyledButton = styled(Button)`
     box-shadow: none !important;
     transition: 0.1s;
   }
+  @media (max-width: 550px) {
+    padding: 10px 15px;
+  }
 `;
 
 const AnswerButton = styled(StyledButton)`
