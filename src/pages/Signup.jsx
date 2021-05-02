@@ -4,11 +4,12 @@ import { Link, useHistory } from "react-router-dom";
 import { AiOutlineMail } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-toastify";
+import { FormRow } from "../styles/Input.styles";
 import Button from "../components/CustomButtons";
-import Input, { FormRow } from "../components/Input";
-import { StyledDiv } from "./Login";
+import Input from "../components/Input";
 import Navbar from "../components/Navbar";
 import { auth, signInWithGoogle } from "../service/firebase.utils";
+import { StyledDiv } from "../styles/Login.styles";
 
 const Signup = () => {
   const history = useHistory();

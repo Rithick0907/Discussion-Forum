@@ -1,47 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Card } from "react-bootstrap";
-import styled from "styled-components";
 import Avatar from "./Avatar";
 import Button from "./CustomButtons";
 import Modal from "./AnswerModal";
+import { StyledCard } from "../styles/Post.styles";
 import { selectQuestionId, setQuestionInfo } from "../store/questionSlice";
 import { firestore } from "../service/firebase.utils";
-
-const StyledCard = styled(Card)`
-  background-color: var(--bg-color-secondary);
-  border-radius: 5px;
-  color: var(--font-color);
-  margin-bottom: 20px;
-
-  & > .card-header {
-    background-color: inherit;
-    display: flex;
-    font-weight: bold;
-  }
-
-  .post-question > p:hover {
-    cursor: pointer;
-    text-decoration: underline;
-  }
-
-  .post__answer {
-    margin: 10px 0;
-    padding: 0 10px;
-  }
-
-  .post__answer span {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  .card-body > img {
-    cursor: pointer;
-    object-fit: contain;
-    width: 100%;
-  }
-`;
 
 const Post = ({ id: Id, question, image, timestamp, user }) => {
   let profilePhoto = user.photo ? user.photo : "";
