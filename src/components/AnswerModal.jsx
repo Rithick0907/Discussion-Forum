@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Form, Modal } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import Button from "./CustomButtons";
 import firebase, { firestore } from "../service/firebase.utils";
 import { userSelector } from "../store/auth";
 import { selectQuestionId } from "../store/questionSlice";
-import Button from "./CustomButtons";
-import { StyledModal } from "./QuestionModal";
+import { StyledModal } from "../styles/Modal.styles";
 
 const AnswerModal = ({
   question,

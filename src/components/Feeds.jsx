@@ -2,9 +2,9 @@ import { useEffect } from "react";
 import { Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useSpring, animated } from "react-spring";
+import Post from "./Post";
 import { firestore } from "../service/firebase.utils";
 import { addPosts, postSelector, loaderSelector } from "../store/postSlice";
-import Post from "./Post";
 
 const Feeds = () => {
   const posts = useSelector(postSelector);

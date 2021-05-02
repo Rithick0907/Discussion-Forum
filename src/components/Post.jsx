@@ -4,9 +4,9 @@ import { Card } from "react-bootstrap";
 import Avatar from "./Avatar";
 import Button from "./CustomButtons";
 import Modal from "./AnswerModal";
-import { StyledCard } from "../styles/Post.styles";
 import { selectQuestionId, setQuestionInfo } from "../store/questionSlice";
 import { firestore } from "../service/firebase.utils";
+import { StyledCard } from "../styles/Post.styles";
 
 const Post = ({ id: Id, question, image, timestamp, user }) => {
   let profilePhoto = user.photo ? user.photo : "";

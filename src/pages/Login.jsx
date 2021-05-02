@@ -4,12 +4,12 @@ import { AiOutlineMail } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { useHistory, Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import { FormRow } from "../styles/Input.styles";
 import Button from "../components/CustomButtons";
 import Input from "../components/Input";
 import Navbar from "../components/Navbar";
-import { StyledDiv } from "../styles/Login.styles";
 import { auth, signInWithGoogle } from "../service/firebase.utils";
+import { FormRow } from "../styles/Input.styles";
+import { StyledDiv } from "../styles/Login.styles";
 
 const Login = () => {
   const history = useHistory();
