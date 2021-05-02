@@ -35,7 +35,7 @@ const Feeds = () => {
     <>
       {loader ? (
         <div className="text-center">
-          <Spinner animation="border" />
+          <Spinner animation="grow" />
         </div>
       ) : (
         posts.map(({ id, question }) => (
