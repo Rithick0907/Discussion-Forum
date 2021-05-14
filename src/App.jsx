@@ -27,7 +27,6 @@ const getProtectedRoutes = (user) =>
 
 const App = () => {
   const user = useSelector(userSelector);
-  // const user = 10;
   const dispatch = useDispatch();
 
   useEffect(() => {

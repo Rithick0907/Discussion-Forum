@@ -89,7 +89,7 @@ const Post = ({ id: Id, question, image, timestamp, user }) => {
             </p>
           ))}
         </div>
-        <img src={image} alt="TCS image" />
+        {image ? <img src={image} alt="TCS image" /> : null}
       </Card.Body>
     </StyledCard>
   );
