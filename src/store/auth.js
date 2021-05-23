@@ -15,7 +15,10 @@ const user = createSlice({
   },
 });
 
-export const userSelector = (store) => store.user.currentUser;
+export const userSelector = createSelector(
+  (store) => store.user,
+  (user) => user.currentUser
+);
 
 export const { login, logout } = user.actions;
 export default user.reducer;

@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { createSelector } from "reselect";
 
 export const questionSlice = createSlice({
   name: "question",
@@ -16,7 +17,13 @@ export const questionSlice = createSlice({
 
 export const { setQuestionInfo } = questionSlice.actions;
 
-export const selectQuestionId = (state) => state.question.questionId;
-export const selectQuestionName = (state) => state.question.questionName;
+export const selectQuestionId = createSelector(
+  (state) => state.question,
+  (question) => question.questionId
+);
+export const selectQuestionName = createSelector(
+  (state) => state.question,
+  (question) => question.questionName
+);
 
 export default questionSlice.reducer;

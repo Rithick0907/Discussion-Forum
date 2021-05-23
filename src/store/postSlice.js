@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { createSelector } from "reselect";
 
 const postSlice = createSlice({
   name: "posts",
@@ -14,9 +15,15 @@ const postSlice = createSlice({
   },
 });
 
-export const postSelector = (store) => store.post.posts;
+export const postSelector = createSelector(
+  (store) => store.post,
+  (post) => post.posts
+);
 
-export const loaderSelector = (store) => store.post.loader;
+export const loaderSelector = createSelector(
+  (store) => store.post,
+  (post) => post.loader
+);
 
 export const { addPosts } = postSlice.actions;
 
