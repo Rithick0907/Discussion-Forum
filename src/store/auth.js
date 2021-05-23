@@ -1,4 +1,5 @@
-import { createSelector, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
+import { createSelector } from "reselect";
 
 const user = createSlice({
   name: "user",

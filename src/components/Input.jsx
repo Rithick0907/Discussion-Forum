@@ -1,5 +1,4 @@
 import { Control, Errors } from "react-redux-form";
-import { FormRow } from "../styles/Input.styles";
 import validator, { errMsg } from "../validateRules";
 
 const getErrorMsg = (validatorList) => {
