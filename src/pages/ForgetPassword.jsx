@@ -1,18 +1,20 @@
 import { Col, Container, Row } from "react-bootstrap";
-import { LocalForm } from "react-redux-form";
 import { AiOutlineMail } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { useHistory, Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import Button from "../components/CustomButtons";
-import Input from "../components/Input";
+import * as Yup from "yup";
+import { FormContainer, FormField, SubmitButton } from "../components/form";
 import Navbar from "../components/Navbar";
 import { auth, signInWithGoogle } from "../service/firebase.utils";
-import { FormRow } from "../styles/Input.styles";
 import { StyledDiv } from "../styles/Login.styles";
 
 const ForgetPassword = () => {
   const history = useHistory();
+
+  const validationSchema = Yup.object().shape({
+    email: Yup.string().required().email().label("Email"),
+  });
 
   const handleResetPassword = async ({ email }) => {
     try {
@@ -30,43 +32,37 @@ const ForgetPassword = () => {
       <Container>
         <Row>
           <Col sm={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
-            <div className="content-box">
-              <h2>Forget Password</h2>
-              <Row className="first-row">
-                <Col sm={{ offset: 1, span: 10 }}>
-                  <LocalForm
-                    initialState={{ email: "", password: "" }}
-                    onSubmit={handleResetPassword}
-                  >
-                    <FormRow className="form-group">
-                      <Input
-                        htmlFor="Email"
-                        name="email"
-                        type="text"
-                        validators={["required", "validEmail"]}
-                      />
-                    </FormRow>
-                    <div className="text-center">
-                      <Button>Send Me Instructions</Button>
-                    </div>
-                  </LocalForm>
-                </Col>
-              </Row>
-              <Row className="second-row">
-                <Col sm={12} md={6}>
-                  <Link to="/signup">
-                    <AiOutlineMail size="2rem" />
-                    <Link to="/login">Log In With Email</Link>
-                  </Link>
-                </Col>
-                <Col sm={12} md={6}>
-                  <Link onClick={signInWithGoogle} to="#">
-                    <FcGoogle size="2rem" />
-                    <span> Log In with Google</span>
-                  </Link>
-                </Col>
-              </Row>
-            </div>
+            <Row className="p-5">
+              <Col className="text-center" sm={{ span: 12 }}>
+                Sign Up To Forum
+              </Col>
+            </Row>
+            <FormContainer
+              initialValues={{
+                email: "",
+              }}
+              onSubmit={handleResetPassword}
+              validationSchema={validationSchema}
+            >
+              <FormField name="email" label="Email" type="email" />
+              <div className="text-center">
+                <SubmitButton className="my-4" title="Send Me Instructions" />
+              </div>
+            </FormContainer>
+            <Row className="p-0 no-gutters">
+              <Col md={{ span: 6 }}>
+                <Link to="/signup">
+                  <AiOutlineMail className="mr-2 mb-1" size="2rem" />
+                  Create and account
+                </Link>
+              </Col>
+              <Col md={{ span: 6 }}>
+                <Link onClick={() => signInWithGoogle(history)}>
+                  <FcGoogle className="mr-2 mb-1" size="2rem" />
+                  Sign with Google
+                </Link>
+              </Col>
+            </Row>
           </Col>
         </Row>
       </Container>
