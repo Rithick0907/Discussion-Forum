@@ -34,7 +34,7 @@ const ForgetPassword = () => {
           <Col sm={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
             <Row className="p-5">
               <Col className="text-center" sm={{ span: 12 }}>
-                Sign Up To Forum
+                Reset Password
               </Col>
             </Row>
             <FormContainer
