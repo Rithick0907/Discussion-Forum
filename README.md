@@ -1,7 +1,8 @@
 # Discussion Forum
 
-Discussion Forum is a e-learning platform that provides user with privilege to post questions to the forum, interact and receive answers from other users.
-Tech Stack: React JS, Redux, Firebase.
+Discussion Forum is a e-learning platform that provides user with privilege to post questions to the forum, interact and receive answers from other users.  
+Tech Stack: React JS, Redux, Firebase.  
+Visit this application at [https://discussion-forum-61117.web.app/](https://discussion-forum-61117.web.app/)
 
 ## Setup and run the app
 
@@ -58,3 +59,4 @@ Follow these steps to setup and run the quickstart:
   ![Screenshot (25)](https://user-images.githubusercontent.com/49742736/122638255-c6cdf380-d110-11eb-9b62-c43af7bfd01a.png)
   
   ![Screenshot (26)](https://user-images.githubusercontent.com/49742736/122638263-d51c0f80-d110-11eb-84f8-5be333887a30.png)
+  
