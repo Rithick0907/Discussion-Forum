@@ -49,7 +49,7 @@ const Login = () => {
               <FormField type="password" name="password" label="Password" />
               <Link to="/forgetPassword">Forget Password?</Link>
               <div className="text-center">
-                <SubmitButton className="my-4" title="Login" />
+                <SubmitButton type="submit" className="my-4" title="Login" />
               </div>
             </FormContainer>
             <Row className="p-0 no-gutters">

@@ -46,7 +46,11 @@ const ForgetPassword = () => {
             >
               <FormField name="email" label="Email" type="email" />
               <div className="text-center">
-                <SubmitButton className="my-4" title="Send Me Instructions" />
+                <SubmitButton
+                  type="submit"
+                  className="my-4"
+                  title="Send Me Instructions"
+                />
               </div>
             </FormContainer>
             <Row className="p-0 no-gutters">

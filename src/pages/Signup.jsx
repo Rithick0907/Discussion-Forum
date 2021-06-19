@@ -18,15 +18,10 @@ const Signup = () => {
   });
 
   const handleSubmit = async (values) => {
-    const { email, createPassword, confirmPassword } = values;
-
-    if (createPassword !== confirmPassword) {
-      toast.error("Password doesn't match");
-      return;
-    }
+    const { email, password } = values;
 
     try {
-      await auth.createUserWithEmailAndPassword(email, createPassword);
+      await auth.createUserWithEmailAndPassword(email, password);
       history.push("/main");
     } catch (err) {
       toast.error(err.message);
@@ -57,7 +52,7 @@ const Signup = () => {
               <FormField name="email" label="Email" type="email" />
               <FormField type="password" name="password" label="Password" />
               <div className="text-center">
-                <SubmitButton className="my-4" title="Register" />
+                <SubmitButton type="submit" className="my-4" title="Register" />
               </div>
             </FormContainer>
             <Row className="p-0 no-gutters">
