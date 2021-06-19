@@ -14,14 +14,20 @@ const Signup = () => {
   const validationSchema = Yup.object().shape({
     name: Yup.string().min(4).max(20),
     email: Yup.string().required().email().label("Email"),
-    password: Yup.string().required().min(8).label("Password"),
+    createPassword: Yup.string().required().min(8).label("Password"),
+    confirmPassword: Yup.string().required().min(8).label("Confirm Password"),
   });
 
   const handleSubmit = async (values) => {
-    const { email, password } = values;
+    const { email, createPassword, confirmPassword } = values;
+
+    if (createPassword !== confirmPassword) {
+      toast.error("Password doesn't match");
+      return;
+    }
 
     try {
-      await auth.createUserWithEmailAndPassword(email, password);
+      await auth.createUserWithEmailAndPassword(email, createPassword);
       history.push("/main");
     } catch (err) {
       toast.error(err.message);
@@ -43,14 +49,24 @@ const Signup = () => {
               initialValues={{
                 name: "",
                 email: "",
-                password: "",
+                createPassword: "",
+                confirmPassword: "",
               }}
               onSubmit={handleSubmit}
               validationSchema={validationSchema}
             >
-              <FormField name="name" label="Name" type="text" />
-              <FormField name="email" label="Email" type="email" />
-              <FormField type="password" name="password" label="Password" />
+              <FormField label="Name" name="name" type="text" />
+              <FormField label="Email" name="email" type="email" />
+              <FormField
+                name="createPassword"
+                label="Password"
+                type="password"
+              />
+              <FormField
+                name="confirmPassword"
+                label="Confirm Password"
+                type="password"
+              />
               <div className="text-center">
                 <SubmitButton type="submit" className="my-4" title="Register" />
               </div>
