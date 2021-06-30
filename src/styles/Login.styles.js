@@ -47,7 +47,7 @@ export const StyledDiv = styled.div`
 
   .row.no-gutters > .col-md-6 {
     border-collapse: collapse;
-    border: 1px solid var(--font-color);
+    border: 1px solid rgb(186 181 181);
     color: var(--font-color);
     display: table-cell;
     font-size: 1.3rem;
