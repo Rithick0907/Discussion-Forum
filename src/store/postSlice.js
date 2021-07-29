@@ -1,17 +1,19 @@
 import { createSelector } from "reselect";
 import { createSlice } from "@reduxjs/toolkit";
 
+const initialState = {
+  posts: [],
+  loader: true,
+};
 const postSlice = createSlice({
   name: "posts",
-  initialState: {
-    posts: [],
-    loader: true,
-  },
+  initialState,
   reducers: {
     addPosts: (state, actions) => {
       actions.payload.posts.forEach((post) => state.posts.push(post));
       state.loader = false;
     },
+    resetPosts: (state, action) => initialState,
   },
 });
 
@@ -20,6 +22,6 @@ export const postSelector = createSelector(
   (post) => post.posts
 );
 
-export const { addPosts } = postSlice.actions;
+export const { addPosts, resetPosts } = postSlice.actions;
 
 export default postSlice.reducer;
