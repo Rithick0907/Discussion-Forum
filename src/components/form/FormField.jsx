@@ -1,21 +1,20 @@
+import { ErrorMessage, useField } from "formik";
 import { Form, FormGroup } from "react-bootstrap";
 
-import ErrorMessage from "./ErrorMessage";
-import React from "react";
-import { useFormikContext } from "formik";
-
-const FormField = ({ name, label, ...otherProps }) => {
-  const { handleChange, errors, setFieldTouched, touched } = useFormikContext();
+const FormField = ({ name, label, ...otherAttributes }) => {
+  const [field, meta] = useField(name);
+  const { error, touched } = meta;
   return (
     <FormGroup controlId={name}>
       <Form.Label>{label}</Form.Label>
       <Form.Control
         className="form-control-lg"
-        onBlur={() => setFieldTouched(name)}
-        onChange={handleChange(name)}
-        {...otherProps}
+        isValid={touched && !error}
+        isInvalid={touched && !!error}
+        {...field}
+        {...otherAttributes}
       />
-      <ErrorMessage visible={touched[name]} error={errors[name]} />
+      <ErrorMessage component="div" name={name} className="text-danger" />
     </FormGroup>
   );
 };
