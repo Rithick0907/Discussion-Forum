@@ -22,17 +22,17 @@ export const StyledDiv = styled.div`
     color: var(--font-color);
   }
 
-  .col-sm-8 > label {
+  .col-sm-8 label {
     font-size: 1.4rem;
     margin: 10px 0;
   }
 
-  .col-sm-8 > input {
+  .col-sm-8 input {
     font-size: 1.4rem;
     padding: 20px 15px;
   }
 
-  .col-sm-8 > a:nth-of-type(1) {
+  .col-sm-8 a:nth-of-type(1) {
     color: var(--font-color);
     display: inline-block;
     font-size: 1.1rem;

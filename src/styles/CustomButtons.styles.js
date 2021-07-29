@@ -1,5 +1,6 @@
-import { Button } from "react-bootstrap";
 import styled, { css } from "styled-components";
+
+import { Button } from "react-bootstrap";
 
 const ButtonSharedStyles = css`
   border-radius: 25px;
@@ -25,6 +26,11 @@ export const StyledButton = styled(Button)`
   ${ButtonSharedStyles}
   background-color: var(--btn-color-primary);
   padding: 16px 30px;
+
+  &:disabled,
+  &[disabled] {
+    background-color: var(--btn-color-primary-hover);
+  }
 
   &:hover,
   &:focus {

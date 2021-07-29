@@ -1,4 +1,5 @@
-import { Formik } from "formik";
+import { Form, Formik } from "formik";
+
 import React from "react";
 
 const FormContainer = ({
@@ -12,7 +13,7 @@ const FormContainer = ({
     onSubmit={onSubmit}
     validationSchema={validationSchema}
   >
-    {() => <>{children}</>}
+    {() => <Form>{children}</Form>}
   </Formik>
 );
 

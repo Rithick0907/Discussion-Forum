@@ -1,12 +1,11 @@
-import { useFormikContext } from "formik";
-import React from "react";
 import { StyledButton as Button } from "../../styles/CustomButtons.styles";
+import React from "react";
+import { useFormikContext } from "formik";
 
 const SubmitButton = ({ title, ...otherProps }) => {
-  const { handleSubmit } = useFormikContext();
-
+  const { isSubmitting } = useFormikContext();
   return (
-    <Button onClick={handleSubmit} {...otherProps}>
+    <Button type="submit" disabled={isSubmitting} {...otherProps}>
       {title}
     </Button>
   );
