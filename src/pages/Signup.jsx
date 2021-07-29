@@ -1,22 +1,38 @@
-import { Col, Container, Row } from "react-bootstrap";
+import * as Yup from "yup";
+
+import { FormContainer, FormField, SubmitButton } from "../components/form";
 import { Link, useHistory } from "react-router-dom";
+import { auth, signInWithGoogle } from "../service/firebase.utils";
+
 import { AiOutlineMail } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
-import { toast } from "react-toastify";
-import * as Yup from "yup";
 import Navbar from "../components/Navbar";
-import { auth, signInWithGoogle } from "../service/firebase.utils";
-import { FormContainer, FormField, SubmitButton } from "../components/form";
 import { StyledDiv } from "../styles/Login.styles";
+import { passwordValidation } from "../validate";
+import { toast } from "react-toastify";
+
+const initialValues = {
+  name: "",
+  email: "",
+  createPassword: "",
+  confirmPassword: "",
+};
+
+const validationSchema = Yup.object().shape({
+  name: Yup.string().required().min(4).max(20).label("Name"),
+  email: Yup.string().required().email().label("Email"),
+  createPassword: Yup.string()
+    .required()
+    .matches(passwordValidation.regExp, passwordValidation.errorMessage)
+    .label("Password"),
+  confirmPassword: Yup.string()
+    .required()
+    .oneOf([Yup.ref("createPassword"), true], "Password must match")
+    .label("Confirm Password"),
+});
 
 const Signup = () => {
   const history = useHistory();
-  const validationSchema = Yup.object().shape({
-    name: Yup.string().min(4).max(20),
-    email: Yup.string().required().email().label("Email"),
-    createPassword: Yup.string().required().min(8).label("Password"),
-    confirmPassword: Yup.string().required().min(8).label("Confirm Password"),
-  });
 
   const handleSubmit = async (values) => {
     const { email, createPassword, confirmPassword } = values;
@@ -35,60 +51,41 @@ const Signup = () => {
   };
 
   return (
-    <StyledDiv>
+    <>
       <Navbar />
-      <Container>
-        <Row>
-          <Col sm={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
-            <Row className="p-5">
-              <Col className="text-center" sm={{ span: 12 }}>
-                Sign Up To Forum
-              </Col>
-            </Row>
-            <FormContainer
-              initialValues={{
-                name: "",
-                email: "",
-                createPassword: "",
-                confirmPassword: "",
-              }}
-              onSubmit={handleSubmit}
-              validationSchema={validationSchema}
-            >
-              <FormField label="Name" name="name" type="text" />
-              <FormField label="Email" name="email" type="email" />
-              <FormField
-                name="createPassword"
-                label="Password"
-                type="password"
-              />
-              <FormField
-                name="confirmPassword"
-                label="Confirm Password"
-                type="password"
-              />
-              <div className="text-center">
-                <SubmitButton type="submit" className="my-4" title="Register" />
-              </div>
-            </FormContainer>
-            <Row className="p-0 no-gutters">
-              <Col md={{ span: 6 }}>
-                <Link to="/login">
-                  <AiOutlineMail className="mr-2 mb-1" size="2rem" />
-                  Log In to account
-                </Link>
-              </Col>
-              <Col md={{ span: 6 }}>
-                <Link onClick={() => signInWithGoogle(history)}>
-                  <FcGoogle className="mr-2 mb-1" size="2rem" />
-                  Sign with Google
-                </Link>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-      </Container>
-    </StyledDiv>
+      <StyledDiv>
+        <div className="form-container">
+          <h1>Sign Up To Forum</h1>
+          <FormContainer
+            initialValues={initialValues}
+            onSubmit={handleSubmit}
+            validationSchema={validationSchema}
+          >
+            <FormField label="Name" name="name" />
+            <FormField label="Email" name="email" />
+            <FormField name="createPassword" label="Password" type="password" />
+            <FormField
+              name="confirmPassword"
+              label="Confirm Password"
+              type="password"
+            />
+            <div className="text-center">
+              <SubmitButton type="submit" className="my-4" title="Register" />
+            </div>
+          </FormContainer>
+          <div className="last-row">
+            <Link to="/login">
+              <AiOutlineMail className="mr-2 mb-1" size="2rem" />
+              Log In to account
+            </Link>
+            <Link onClick={() => signInWithGoogle(history)}>
+              <FcGoogle className="mr-2 mb-1" size="2rem" />
+              Sign with Google
+            </Link>
+          </div>
+        </div>
+      </StyledDiv>
+    </>
   );
 };
 

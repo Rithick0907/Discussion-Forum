@@ -1,74 +1,69 @@
 import styled from "styled-components";
 
 export const StyledDiv = styled.div`
+  align-content: center;
   background-color: var(--bg-color-primary);
-  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 1.2rem;
+  justify-content: center;
+  min-height: 89vh;
 
-  .container {
-    height: 89%;
-  }
-  .row {
-    align-items: center;
-    height: 100%;
-  }
-  .col-sm-8 {
-    background-color: var(--bg-color-secondary);
-    padding: 0 40px;
-  }
-
-  .col-sm-8 > .row.p-5 {
-    font-size: 2.2rem;
-    font-weight: bold;
-    color: var(--font-color);
-  }
-
-  .col-sm-8 label {
-    font-size: 1.4rem;
-    margin: 10px 0;
-  }
-
-  .col-sm-8 input {
-    font-size: 1.4rem;
-    padding: 20px 15px;
-  }
-
-  .col-sm-8 a:nth-of-type(1) {
-    color: var(--font-color);
-    display: inline-block;
-    font-size: 1.1rem;
-    margin-top: 15px;
-    text-decoration: underline;
-    width: 100%;
-  }
-
-  .row.no-gutters {
-    margin: 0 -40px;
-  }
-
-  .row.no-gutters > .col-md-6 {
-    border-collapse: collapse;
-    border: 1px solid rgb(186 181 181);
-    color: var(--font-color);
-    display: table-cell;
-    font-size: 1.3rem;
-  }
-
-  .row.no-gutters > .col-md-6:hover {
-    background-color: var(--btn-color-secondary-hover);
-    color: var(--bg-color-secondary);
-  }
-
-  a {
+  & h1 {
+    margin-top: 40px;
     text-align: center;
-    text-decoration: none;
   }
 
-  .col-md-6 > a {
-    color: inherit;
+  & .form-container {
+    align-self: center;
+    background-color: var(--bg-color-secondary);
+    box-shadow: 0 2px 8px lightgray;
+    flex-basis: 90%;
+    margin: 40px;
+  }
+
+  & .form-group {
+    margin: 20px 40px;
+    font-size: 1.4rem;
+  }
+
+  & .form-control {
+    font-size: 1.5rem;
+  }
+
+  & a {
+    color: var(--font-color);
+    text-align: center;
+    text-decoration: underline;
+  }
+
+  .last-row a {
     display: inline-block;
+    border: 1px solid lightgray;
     font-weight: bold;
-    height: 100%;
     padding: 15px 0;
+    text-decoration: none;
     width: 100%;
+  }
+
+  .last-row a:nth-child(1) {
+    border-right: 1px solid lightgray;
+  }
+
+  .last-row a:hover {
+    background-color: var(--btn-color-secondary-hover);
+    color: var(--bg-color-primary);
+  }
+
+  @media (min-width: 500px) {
+    .last-row a {
+      width: 50%;
+    }
+  }
+
+  @media (min-width: 900px) {
+    & .form-container {
+      flex-basis: 50%;
+    }
   }
 `;

@@ -17,7 +17,7 @@ const ButtonSharedStyles = css`
 
   &:active,
   &:visited {
-    box-shadow: none !important;
+    box-shadow: none;
     transition: 0.1s;
   }
 `;
@@ -41,11 +41,6 @@ export const StyledButton = styled(Button)`
   &:active,
   &:visited {
     background-color: var(--btn-color-primary) !important;
-  }
-
-  @media (max-width: 550px) {
-    font-size: 0.9rem;
-    padding: 10px 15px;
   }
 `;
 
