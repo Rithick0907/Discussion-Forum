@@ -11,6 +11,7 @@ const Feeds = () => {
   const posts = useSelector(postSelector);
   const dispatch = useDispatch();
   const loaderRef = useRef(null);
+  const [isCompleted, setCompleted] = useState(false);
 
   const updatePosts = useCallback(
     (collection) => {
@@ -25,6 +26,8 @@ const Feeds = () => {
           })
         );
         setLastDocs(lastFetchedDocs);
+      } else {
+        setCompleted(true);
       }
     },
     [dispatch]
@@ -46,7 +49,6 @@ const Feeds = () => {
   const handleObserver = useCallback(
     (entries) => {
       const target = entries[0];
-      console.log(lastDocs);
       if (lastDocs && target.isIntersecting) fetchMore(lastDocs);
     },
     [lastDocs, fetchMore]
@@ -85,9 +87,11 @@ const Feeds = () => {
           user={question.user}
         />
       ))}
-      <div className="text-center">
-        <Spinner ref={loaderRef} animation="grow" />
-      </div>
+      {!isCompleted && (
+        <div className="text-center">
+          <Spinner ref={loaderRef} animation="grow" />
+        </div>
+      )}
     </>
   );
 };
