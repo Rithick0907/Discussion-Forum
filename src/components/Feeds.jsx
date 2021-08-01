@@ -1,5 +1,5 @@
 import { addPosts, postSelector } from "../store/postSlice";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Post from "./Post";
@@ -12,6 +12,11 @@ const Feeds = () => {
   const dispatch = useDispatch();
   const loaderRef = useRef(null);
   const [isCompleted, setCompleted] = useState(false);
+  const query = useMemo(
+    () =>
+      firestore.collection("questions").orderBy("timestamp", "desc").limit(2),
+    []
+  );
 
   const updatePosts = useCallback(
     (collection) => {
@@ -35,15 +40,12 @@ const Feeds = () => {
 
   const fetchMore = useCallback(
     (lastDocs) => {
-      firestore
-        .collection("questions")
-        .orderBy("timestamp", "desc")
+      query
         .startAfter(lastDocs)
-        .limit(2)
         .get()
         .then((collection) => updatePosts(collection));
     },
-    [updatePosts]
+    [updatePosts, query]
   );
 
   const handleObserver = useCallback(
@@ -67,13 +69,8 @@ const Feeds = () => {
   }, [handleObserver]);
 
   useEffect(() => {
-    firestore
-      .collection("questions")
-      .orderBy("timestamp", "desc")
-      .limit(2)
-      .get()
-      .then((collection) => updatePosts(collection));
-  }, [updatePosts]);
+    query.get().then((collection) => updatePosts(collection));
+  }, [updatePosts, query]);
 
   return (
     <>
