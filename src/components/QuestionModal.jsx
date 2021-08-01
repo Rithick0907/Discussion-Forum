@@ -1,27 +1,43 @@
-import { useState } from "react";
 import { Form, InputGroup, Modal } from "react-bootstrap";
-import { BsLink45Deg } from "react-icons/bs";
-import { useSelector } from "react-redux";
-import Avatar from "./Avatar";
-import Button from "./CustomButtons";
 import firebase, { firestore } from "../service/firebase.utils";
-import { userSelector } from "../store/auth";
+import { useDispatch, useSelector } from "react-redux";
+
+import Avatar from "./Avatar";
+import { BsLink45Deg } from "react-icons/bs";
+import Button from "./CustomButtons";
 import { StyledModal } from "../styles/Modal.styles";
+import { toast } from "react-toastify";
+import { updatePosts } from "../store/postSlice";
+import { useState } from "react";
+import { userSelector } from "../store/auth";
 
 const QuestionModal = ({ title, show, onHide }) => {
+  const dispatch = useDispatch();
   const [question, setQuestion] = useState("");
   const [link, setLink] = useState("");
   const user = useSelector(userSelector);
 
-  const handleQuestion = (e) => {
+  const handleQuestion = async (e) => {
     e.preventDefault();
     onHide();
-    firestore.collection("questions").add({
-      user,
-      question,
-      imageURL: link,
-      timestamp: firebase.firestore.FieldValue.serverTimestamp(), //Add Timestamp after question posted to firebase
-    });
+
+    try {
+      const docRef = await firestore.collection("questions").add({
+        user,
+        question,
+        imageURL: link,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(), //Add Timestamp after question posted to firebase
+      });
+      const result = await docRef.get();
+      dispatch(
+        updatePosts({
+          id: docRef.id,
+          question: result.data(),
+        })
+      );
+    } catch (e) {
+      toast.error("Something went wrong");
+    }
 
     setQuestion("");
     setLink("");
