@@ -1,12 +1,13 @@
-import { useEffect, useState } from "react";
+import { selectQuestionId, setQuestionInfo } from "../store/questionSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { Card } from "react-bootstrap";
+import { useEffect, useState } from "react";
+
 import Avatar from "./Avatar";
 import Button from "./CustomButtons";
+import { Card } from "react-bootstrap";
 import Modal from "./AnswerModal";
-import { selectQuestionId, setQuestionInfo } from "../store/questionSlice";
-import { firestore } from "../service/firebase.utils";
 import { StyledCard } from "../styles/Post.styles";
+import { firestore } from "../service/firebase.utils";
 
 const Post = ({ id: Id, question, image, timestamp, user }) => {
   let profilePhoto = user.photo ? user.photo : "";
@@ -89,7 +90,7 @@ const Post = ({ id: Id, question, image, timestamp, user }) => {
             </p>
           ))}
         </div>
-        {image ? <img src={image} alt="TCS image" /> : null}
+        {image ? <img src={image} /> : null}
       </Card.Body>
     </StyledCard>
   );
