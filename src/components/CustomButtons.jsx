@@ -1,4 +1,4 @@
-import { StyledButton, AnswerButton } from "../styles/CustomButtons.styles";
+import { AnswerButton, StyledButton } from "../styles/CustomButtons.styles";
 
 const CustomButton = ({ children, answerButton, onClick }) =>
   answerButton ? (

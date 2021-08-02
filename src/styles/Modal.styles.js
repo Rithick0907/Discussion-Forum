@@ -4,19 +4,18 @@ import styled from "styled-components";
 export const StyledModal = styled(Modal)`
   font-size: 1.7rem;
 
-  span {
+  .modal-body > span {
     margin-left: 10px;
   }
 
-  .form-control[type="text"],
-  .form-control[type="url"] {
+  .form-group {
+    font-size: 1.4rem;
+  }
+
+  .form-control {
     border: 0;
     border-bottom: 1px solid gray;
-    padding: 5px;
     height: 40px;
-    font-weight: 200;
-    font-size: 1.4rem;
-    margin: 14px 0;
     transition: all 0.3s ease;
   }
 
@@ -26,16 +25,25 @@ export const StyledModal = styled(Modal)`
     outline: none;
   }
 
-  button.close > span {
-    font-size: 25px;
-    margin-right: 10px;
+  .form-group > .input-group {
+    border-bottom: 1px solid gray;
+    margin-top: 20px;
+  }
+
+  .input-group > .form-control {
+    border: 0;
+    font-size: 1.4rem;
   }
 
   span.input-group-text {
     background-color: white;
     border: 0;
     height: 40px;
-    margin: 14px 0 0 0;
-    padding: 5px;
+    padding: 0;
+  }
+
+  button.close > span {
+    font-size: 25px;
+    margin-right: 10px;
   }
 `;
