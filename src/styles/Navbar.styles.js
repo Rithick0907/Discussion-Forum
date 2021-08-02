@@ -30,13 +30,24 @@ export const StyledNavbar = styled(Navbar)`
     margin-left: 10px;
   }
 
-  @media (max-width: 550px) {
+  @media (max-width: 575px) {
     .navbar-brand {
-      font-size: 1.5rem;
+      font-size: 2rem;
     }
     .navbar-brand > img {
       width: 20px;
       height: 20px;
+    }
+    .navbar-toggler.collapsed {
+      font-size: 1.8rem;
+    }
+    .question-btn {
+      margin-top: 1rem;
+    }
+    .question-btn > button {
+      font-size: 1rem;
+      margin-left: 1.5rem;
+      padding: 10px 20px;
     }
   }
 `;
