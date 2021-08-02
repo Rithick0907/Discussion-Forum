@@ -1,7 +1,6 @@
 import * as Yup from "yup";
 
 import { FormContainer, FormField } from "./form";
-import { InputGroup, Modal } from "react-bootstrap";
 import firebase, { firestore } from "../service/firebase.utils";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -9,6 +8,7 @@ import Avatar from "./Avatar";
 import { BsLink45Deg } from "react-icons/bs";
 import Button from "./CustomButtons";
 import FormInputGroup from "./form/FormInputGroup";
+import { Modal } from "react-bootstrap";
 import { StyledModal } from "../styles/Modal.styles";
 import { toast } from "react-toastify";
 import { updatePosts } from "../store/postSlice";

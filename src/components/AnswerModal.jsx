@@ -1,11 +1,22 @@
-import { useState } from "react";
-import { Form, Modal } from "react-bootstrap";
-import { useSelector } from "react-redux";
-import Button from "./CustomButtons";
+import * as Yup from "yup";
+
+import { FormContainer, FormField } from "./form";
 import firebase, { firestore } from "../service/firebase.utils";
-import { userSelector } from "../store/auth";
-import { selectQuestionId } from "../store/questionSlice";
+
+import Button from "./CustomButtons";
+import { Modal } from "react-bootstrap";
 import { StyledModal } from "../styles/Modal.styles";
+import { selectQuestionId } from "../store/questionSlice";
+import { useSelector } from "react-redux";
+import { userSelector } from "../store/auth";
+
+const initialValues = {
+  answer: "",
+};
+
+const validationSchema = Yup.object().shape({
+  answer: Yup.string().required("Answer must be added"),
+});
 
 const AnswerModal = ({
   question,
@@ -14,12 +25,10 @@ const AnswerModal = ({
   user: questionedUser,
   onHide,
 }) => {
-  const [answer, setAnswer] = useState("");
   const user = useSelector(userSelector);
   const questionId = useSelector(selectQuestionId);
 
-  const handleQuestion = (e) => {
-    e.preventDefault();
+  const handleQuestion = ({ answer }) => {
     onHide();
     if (questionId) {
       firestore
@@ -27,10 +36,10 @@ const AnswerModal = ({
         .doc(questionId)
         .collection("answers")
         .add({
-          questionId: questionId,
+          questionId,
           timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-          answer: answer,
-          user: user,
+          answer,
+          user,
         });
     }
   };
@@ -38,38 +47,35 @@ const AnswerModal = ({
   return (
     <StyledModal centered size="lg" show={show} onHide={onHide}>
       <Modal.Header closeButton />
-      <Modal.Body className="px-5">
+      <Modal.Body className="px-4">
         <div>
           <div>{question}</div>
           <small>
             asked by
             <span className="font-weight-bold">
-              {`${
+              {` ${
                 questionedUser.name ? questionedUser.name : questionedUser.email
               } `}
             </span>
             on
             <span className="font-weight-bold">
-              {new Date(timestamp?.toDate()).toLocaleString()}
+              {` ${new Date(timestamp?.toDate()).toLocaleString()}`}
             </span>
           </small>
         </div>
-        <Form className="my-4">
-          <Form.Control
-            style={{ fontSize: "1.5rem" }}
-            as="textarea"
-            rows={10}
-            placeholder="Enter Your Answer"
-            value={answer}
-            onChange={({ currentTarget }) => setAnswer(currentTarget.value)}
-          />
-        </Form>
+        <FormContainer
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={handleQuestion}
+        >
+          <FormField name="answer" placeholder="Enter Your Answer" />
+          <div className="mt-5 pt-3 border-top text-right">
+            <Button type="submit" answerButton>
+              Add Answer
+            </Button>
+          </div>
+        </FormContainer>
       </Modal.Body>
-      <Modal.Footer>
-        <Button answerButton onClick={handleQuestion}>
-          Add Answer
-        </Button>
-      </Modal.Footer>
     </StyledModal>
   );
 };
