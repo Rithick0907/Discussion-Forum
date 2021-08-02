@@ -20,18 +20,24 @@ const CustomNavbar = ({ addQuestion }) => {
           <img src="/favicon.ico" alt="Discussion Forum Logo" />
           Discussion Forum
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ml-auto">
-            {addQuestion && (
-              <div className="question-btn">
-                <Button onClick={handleShow}>Add Question</Button>
-                <Modal show={show} title="Add Question" onHide={handleClose} />
-                <Logout />
-              </div>
-            )}
-          </Nav>
-        </Navbar.Collapse>
+        {addQuestion && (
+          <>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="ml-auto">
+                <div className="question-btn">
+                  <Button onClick={handleShow}>Add Question</Button>
+                  <Modal
+                    show={show}
+                    title="Add Question"
+                    onHide={handleClose}
+                  />
+                  <Logout />
+                </div>
+              </Nav>
+            </Navbar.Collapse>
+          </>
+        )}
       </Container>
     </StyledNavbar>
   );
