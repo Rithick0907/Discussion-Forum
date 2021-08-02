@@ -13,12 +13,15 @@ const ButtonSharedStyles = css`
   &:hover,
   &:focus {
     border: 0;
+    outline: none;
+    box-shadow: none !important;
   }
 
   &:active,
   &:visited {
-    box-shadow: none;
+    box-shadow: none !important;
     transition: 0.1s;
+    outline: none;
   }
 `;
 
@@ -35,7 +38,6 @@ export const StyledButton = styled(Button)`
   &:hover,
   &:focus {
     background-color: var(--btn-color-primary-hover);
-    box-shadow: 0 0 2px var(--btn-color-primary);
   }
 
   &:active,
