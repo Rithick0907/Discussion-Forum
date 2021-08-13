@@ -26,7 +26,7 @@ const CustomNavbar = ({ addQuestion }) => {
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="ml-auto">
                 <div className="question-btn">
-                  <Button onClick={handleShow}>Add Question</Button>
+                  <Button onClick={handleShow} title="Add Question" />
                   <Modal
                     show={show}
                     title="Add Question"

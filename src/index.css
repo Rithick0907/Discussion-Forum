@@ -1,3 +1,34 @@
+.custom-btn {
+  border-radius: 25px;
+  border: 0;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  outline: none;
+  padding: 16px 30px;
+  text-align: center;
+}
+.custom-btn--primary {
+  background-color: #fc4364;
+}
+.custom-btn--primary:hover {
+  background-color: #fb113b;
+}
+.custom-btn--primary:active, .custom-btn--primary:visited {
+  background-color: #fea7b7;
+}
+
+.custom-btn--secondary {
+  background-color: #20bdaf;
+  padding: 10px 20px;
+}
+.custom-btn--secondary:hover {
+  background-color: #199187;
+}
+.custom-btn--secondary:active, .custom-btn--secondary:visited {
+  background-color: #33ddcd;
+}
+
 .avatar__img {
   height: 3rem;
   width: 3rem;

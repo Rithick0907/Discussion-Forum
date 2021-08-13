@@ -74,9 +74,7 @@ const QuestionModal = ({ title, show, onHide }) => {
             prepend={<BsLink45Deg size="25px" />}
           />
           <div className="mt-5 pt-3 border-top text-right">
-            <Button type="submit" answerButton>
-              Add Question
-            </Button>
+            <Button type="submit" answerButton title="Add Question" />
           </div>
         </FormContainer>
       </Modal.Body>

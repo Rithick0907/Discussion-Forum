@@ -70,9 +70,7 @@ const AnswerModal = ({
         >
           <FormField name="answer" placeholder="Enter Your Answer" />
           <div className="mt-5 pt-3 border-top text-right">
-            <Button type="submit" answerButton>
-              Add Answer
-            </Button>
+            <Button type="submit" title="Add Answer" answerButton />
           </div>
         </FormContainer>
       </Modal.Body>

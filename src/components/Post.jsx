@@ -59,9 +59,7 @@ const Post = ({ id: Id, question, image, timestamp, user }) => {
       <Card.Body>
         <div className="post-question d-flex">
           <p className="d-inline-block">{question}</p>
-          <Button onClick={handleShow} answerButton>
-            Answer
-          </Button>
+          <Button onClick={handleShow} title="Answer" answerButton />
           <Modal
             question={question}
             user={user}

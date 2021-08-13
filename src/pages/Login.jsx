@@ -51,7 +51,11 @@ const Login = () => {
               Forget Password?
             </Link>
             <div className="text-center">
-              <SubmitButton type="submit" className="my-4" title="Login" />
+              <SubmitButton
+                type="submit"
+                className="my-4 custom-btn--primary"
+                title="Login"
+              />
             </div>
           </FormContainer>
           <div className="last-row">

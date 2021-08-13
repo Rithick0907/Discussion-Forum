@@ -70,7 +70,11 @@ const Signup = () => {
               type="password"
             />
             <div className="text-center">
-              <SubmitButton type="submit" className="my-4" title="Register" />
+              <SubmitButton
+                type="submit"
+                className="my-4 custom-btn--primary"
+                title="Register"
+              />
             </div>
           </FormContainer>
           <div className="last-row">

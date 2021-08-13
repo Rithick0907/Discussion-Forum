@@ -1,14 +1,20 @@
-import { AnswerButton, StyledButton } from "../styles/CustomButtons.styles";
+import { Button } from "react-bootstrap";
 
-const CustomButton = ({ children, answerButton, onClick }) =>
-  answerButton ? (
-    <AnswerButton onClick={onClick} type="submit">
-      {children}
-    </AnswerButton>
-  ) : (
-    <StyledButton onClick={onClick} type="submit">
-      {children}
-    </StyledButton>
+const CustomButton = ({ title, answerButton, className, ...otherProps }) => {
+  const classNames = `${className !== "" ? className : ""} ${
+    answerButton ? "custom-btn--secondary ml-auto" : "custom-btn--primary"
+  }`;
+
+  return (
+    <Button
+      bsPrefix="custom-btn"
+      className={classNames}
+      type="submit"
+      {...otherProps}
+    >
+      {title}
+    </Button>
   );
+};
 
 export default CustomButton;

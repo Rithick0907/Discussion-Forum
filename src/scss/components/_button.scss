@@ -1,0 +1,39 @@
+@use "../base/functions" as *;
+
+.custom-btn {
+  border-radius: 25px;
+  border: 0;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  outline: none;
+  padding: 16px 30px;
+  text-align: center;
+
+  @at-root #{&}--primary {
+    background-color: getBtnColor(primary);
+
+    &:hover {
+      background-color: darken(getBtnColor(primary), 10%);
+    }
+
+    &:active,
+    &:visited {
+      background-color: lighten(getBtnColor(primary), 20%);
+    }
+  }
+
+  @at-root #{&}--secondary {
+    background-color: getBtnColor(secondary);
+    padding: 10px 20px;
+
+    &:hover {
+      background-color: darken(getBtnColor(secondary), 10%);
+    }
+
+    &:active,
+    &:visited {
+      background-color: lighten(getBtnColor(secondary), 10%);
+    }
+  }
+}

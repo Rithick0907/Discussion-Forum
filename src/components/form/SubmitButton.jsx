@@ -1,11 +1,18 @@
-import { StyledButton as Button } from "../../styles/CustomButtons.styles";
+import { Button } from "react-bootstrap";
 import React from "react";
 import { useFormikContext } from "formik";
 
-const SubmitButton = ({ title, ...otherProps }) => {
+const SubmitButton = ({ title, className, ...otherProps }) => {
   const { isSubmitting } = useFormikContext();
+  const classNames = `custom-btn--primary ${className ? className : ""}`;
   return (
-    <Button type="submit" disabled={isSubmitting} {...otherProps}>
+    <Button
+      bsPrefix="custom-btn"
+      type="submit"
+      disabled={isSubmitting}
+      className={classNames}
+      {...otherProps}
+    >
       {title}
     </Button>
   );
