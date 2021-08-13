@@ -3,7 +3,6 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 import Button from "./CustomButtons";
 import Logout from "./Logout";
 import Modal from "./QuestionModal";
-import { StyledNavbar } from "../styles/Navbar.styles";
 import { useState } from "react";
 
 const CustomNavbar = ({ addQuestion }) => {
@@ -14,9 +13,9 @@ const CustomNavbar = ({ addQuestion }) => {
   const handleClose = () => setShow(false);
 
   return (
-    <StyledNavbar sticky="top" expand="sm">
-      <Container>
-        <Navbar.Brand href="/login">
+    <Navbar sticky="top" expand="sm">
+      <Container className="navbar__container">
+        <Navbar.Brand className="navbar__brand" href="/login">
           <img src="/favicon.ico" alt="Discussion Forum Logo" />
           Discussion Forum
         </Navbar.Brand>
@@ -39,7 +38,7 @@ const CustomNavbar = ({ addQuestion }) => {
           </>
         )}
       </Container>
-    </StyledNavbar>
+    </Navbar>
   );
 };
 

@@ -1,7 +1,7 @@
 import { Button } from "react-bootstrap";
 
 const CustomButton = ({ title, answerButton, className, ...otherProps }) => {
-  const classNames = `${className !== "" ? className : ""} ${
+  const classNames = `${className ? className + " " : ""}${
     answerButton ? "custom-btn--secondary ml-auto" : "custom-btn--primary"
   }`;
 
