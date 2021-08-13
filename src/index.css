@@ -1,3 +1,9 @@
+.avatar__img {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 100%;
+}
+
 :root {
   --bg-color-primary: rgb(245, 245, 248);
   --bg-color-secondary: rgb(255, 255, 255);
