@@ -6,7 +6,6 @@ import Avatar from "./Avatar";
 import Button from "./CustomButtons";
 import { Card } from "react-bootstrap";
 import Modal from "./AnswerModal";
-import { StyledCard } from "../styles/Post.styles";
 import { firestore } from "../service/firebase.utils";
 
 const Post = ({ id: Id, question, image, timestamp, user }) => {
@@ -39,7 +38,7 @@ const Post = ({ id: Id, question, image, timestamp, user }) => {
   const handleClose = () => setShow(false);
 
   return (
-    <StyledCard
+    <Card
       onClick={() =>
         dispatch(
           setQuestionInfo({
@@ -56,9 +55,9 @@ const Post = ({ id: Id, question, image, timestamp, user }) => {
           {new Date(timestamp?.toDate()).toLocaleString()}
         </small>
       </Card.Header>
-      <Card.Body>
-        <div className="post-question d-flex">
-          <p className="d-inline-block">{question}</p>
+      <Card.Body className="post">
+        <div className="post__question d-flex">
+          <p className="post__question__content">{question}</p>
           <Button onClick={handleShow} title="Answer" answerButton />
           <Modal
             question={question}
@@ -72,9 +71,8 @@ const Post = ({ id: Id, question, image, timestamp, user }) => {
           {getAnswers.map(({ id, answers }) => (
             <p id={id}>
               {Id === answers.questionId ? (
-                <span>
+                <span className="d-flex justify-content-between">
                   {answers.answer}
-                  <br />
                   <span>
                     <span style={{ color: "#b92b27" }}>
                       {answers.user.email} on{" "}
@@ -88,9 +86,9 @@ const Post = ({ id: Id, question, image, timestamp, user }) => {
             </p>
           ))}
         </div>
-        {image ? <img src={image} alt="" /> : null}
+        {image ? <img className="card__image" src={image} alt="" /> : null}
       </Card.Body>
-    </StyledCard>
+    </Card>
   );
 };
 

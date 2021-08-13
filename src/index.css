@@ -1,3 +1,4 @@
+/*Typography*/
 html {
   font-size: 62.5%;
 }
@@ -27,6 +28,7 @@ body {
 }
 
 .navbar__brand {
+  color: gray;
   font-size: 2.5rem;
   font-weight: 500px;
   text-align: center;
@@ -54,12 +56,14 @@ body {
   }
 }
 
+/*Avatar Component*/
 .avatar__img {
   height: 3rem;
   width: 3rem;
   border-radius: 100%;
 }
 
+/*Button Component*/
 .custom-btn {
   border-radius: 25px;
   border: 0;
@@ -91,7 +95,39 @@ body {
   background-color: #33ddcd;
 }
 
-/* Page Transition Animation */
+/*Post Component*/
+.card {
+  background-color: white;
+  border-radius: 5px;
+  color: gray;
+  margin-bottom: 20px;
+}
+.card-header {
+  background-color: inherit;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-weight: bold;
+}
+
+.post__question__content:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.post__answer {
+  margin-block: 10px;
+  padding-inline: 10px;
+}
+
+.card__image {
+  cursor: pointer;
+  -o-object-fit: contain;
+     object-fit: contain;
+  width: 100%;
+}
+
+/* Page Transition Animation Component*/
 .page-enter {
   opacity: 0.01;
   -webkit-transform: translateX(-100%);

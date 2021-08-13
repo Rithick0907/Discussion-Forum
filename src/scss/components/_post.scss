@@ -1,0 +1,32 @@
+@use "../base/functions" as *;
+
+/*Post Component*/
+
+.card {
+  background-color: getBgColor(secondary);
+  border-radius: 5px;
+  color: getFontColor(primary);
+  margin-bottom: 20px;
+
+  @at-root #{&}-header {
+    background-color: inherit;
+    display: flex;
+    font-weight: bold;
+  }
+
+  @at-root .post__question__content:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  @at-root .post__answer {
+    margin-block: 10px;
+    padding-inline: 10px;
+  }
+
+  @at-root #{&}__image {
+    cursor: pointer;
+    object-fit: contain;
+    width: 100%;
+  }
+}
