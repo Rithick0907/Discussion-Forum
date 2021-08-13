@@ -1,15 +1,14 @@
 import { Container } from "react-bootstrap";
 import Feeds from "../components/Feeds";
 import Navbar from "../components/Navbar";
-import { LandingStyles } from "../styles/Landing.styles";
 
 const Landing = () => (
-  <LandingStyles>
+  <div className="landing-page">
     <Navbar addQuestion />
-    <Container>
+    <Container className="landing-page__container">
       <Feeds />
     </Container>
-  </LandingStyles>
+  </div>
 );
 
 export default Landing;

@@ -1,1 +1,13 @@
+@use "../base/functions" as *;
 @use "../components/avatar";
+
+.landing-page {
+  background-color: getBgColor(primary);
+  width: 100%;
+
+  @at-root #{&}__container {
+    font-size: 1.5rem;
+    min-height: 89vh;
+    padding: 4rem 0;
+  }
+}
