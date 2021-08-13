@@ -1,3 +1,19 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  margin: 0;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font: gray;
+}
+
+.avatar__img {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 100%;
+}
+
 .custom-btn {
   border-radius: 25px;
   border: 0;
@@ -29,45 +45,7 @@
   background-color: #33ddcd;
 }
 
-.avatar__img {
-  height: 3rem;
-  width: 3rem;
-  border-radius: 100%;
-}
-
-.landing-page {
-  background-color: #f5f5f8;
-  width: 100%;
-}
-.landing-page__container {
-  font-size: 1.5rem;
-  min-height: 89vh;
-  padding: 4rem 0;
-}
-
-:root {
-  --bg-color-primary: rgb(245, 245, 248);
-  --bg-color-secondary: rgb(255, 255, 255);
-  --btn-color-primary: rgb(252, 67, 100);
-  --btn-color-primary-hover: rgb(252, 42, 79);
-  --btn-color-secondary: rgb(32, 189, 175);
-  --btn-color-secondary-hover: rgb(36, 175, 162);
-  --font-color: rgb(128, 128, 128);
-}
-
-html {
-  font-size: 62.5%;
-}
-
-body {
-  margin: 0;
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  font: gray;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/*Page Transition Styles*/
+/* Page Transition Animation */
 .page-enter {
   opacity: 0.01;
   -webkit-transform: translateX(-100%);
@@ -114,4 +92,24 @@ body {
   opacity: 0;
   -webkit-transition: opacity 500ms ease-in;
   transition: opacity 500ms ease-in;
+}
+
+.landing-page {
+  background-color: #f5f5f8;
+  width: 100%;
+}
+.landing-page__container {
+  font-size: 1.5rem;
+  min-height: 89vh;
+  padding: 4rem 0;
+}
+
+:root {
+  --bg-color-primary: rgb(245, 245, 248);
+  --bg-color-secondary: rgb(255, 255, 255);
+  --btn-color-primary: rgb(252, 67, 100);
+  --btn-color-primary-hover: rgb(252, 42, 79);
+  --btn-color-secondary: rgb(32, 189, 175);
+  --btn-color-secondary-hover: rgb(36, 175, 162);
+  --font-color: rgb(128, 128, 128);
 }
