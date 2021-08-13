@@ -171,15 +171,6 @@ body {
 }
 
 /*Form Container Component*/
-.form-group {
-  margin: 20px 40px;
-  font-size: 1.4rem;
-}
-
-.form-control {
-  font-size: 1.5rem;
-}
-
 .form-container {
   -ms-flex-item-align: center;
       align-self: center;
@@ -189,6 +180,13 @@ body {
   -ms-flex-preferred-size: 50%;
       flex-basis: 50%;
   margin: 40px;
+}
+.form-container .form-group {
+  margin: 20px 40px;
+  font-size: 1.4rem;
+}
+.form-container .form-control {
+  font-size: 1.5rem;
 }
 @media screen and (max-width: 768px) {
   .form-container {
