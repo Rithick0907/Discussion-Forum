@@ -5,7 +5,6 @@ import firebase, { firestore } from "../service/firebase.utils";
 
 import Button from "./CustomButtons";
 import { Modal } from "react-bootstrap";
-import { StyledModal } from "../styles/Modal.styles";
 import { selectQuestionId } from "../store/questionSlice";
 import { useSelector } from "react-redux";
 import { userSelector } from "../store/auth";
@@ -45,7 +44,7 @@ const AnswerModal = ({
   };
 
   return (
-    <StyledModal centered size="lg" show={show} onHide={onHide}>
+    <Modal centered size="lg" show={show} onHide={onHide}>
       <Modal.Header closeButton />
       <Modal.Body className="px-4">
         <div>
@@ -74,7 +73,7 @@ const AnswerModal = ({
           </div>
         </FormContainer>
       </Modal.Body>
-    </StyledModal>
+    </Modal>
   );
 };
 

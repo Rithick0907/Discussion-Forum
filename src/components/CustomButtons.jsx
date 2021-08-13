@@ -1,20 +1,18 @@
 import { Button } from "react-bootstrap";
+import cn from "classnames";
 
-const CustomButton = ({ title, answerButton, className, ...otherProps }) => {
-  const classNames = `${className ? className + " " : ""}${
-    answerButton ? "custom-btn--secondary ml-auto" : "custom-btn--primary"
-  }`;
-
-  return (
-    <Button
-      bsPrefix="custom-btn"
-      className={classNames}
-      type="submit"
-      {...otherProps}
-    >
-      {title}
-    </Button>
-  );
-};
+const CustomButton = ({ title, answerButton, className, ...otherProps }) => (
+  <Button
+    bsPrefix="custom-btn"
+    className={cn(className, {
+      "custom-btn--secondary ml-auto": answerButton,
+      "custom-btn--primary": !answerButton,
+    })}
+    type="submit"
+    {...otherProps}
+  >
+    {title}
+  </Button>
+);
 
 export default CustomButton;

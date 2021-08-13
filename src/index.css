@@ -127,6 +127,49 @@ body {
   width: 100%;
 }
 
+/*Modal Component*/
+.modal {
+  font-size: 1.7rem;
+}
+.modal-header {
+  padding: 10px 15px;
+}
+.modal-header .close {
+  font-size: 30px;
+}
+
+.modal .form-group {
+  font-size: 1.4rem;
+}
+.modal .form-control {
+  border: 0;
+  border-bottom: 1px solid gray;
+  height: 40px;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.modal .form-control:active, .modal .form-control:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: none;
+}
+.form-group > .input-group {
+  border-bottom: 1px solid gray;
+  margin-top: 20px;
+}
+
+.input-group > .form-control {
+  border: 0;
+  font-size: 1.4rem;
+}
+
+.input-group-text {
+  background-color: white;
+  border: 0;
+  height: 40px;
+  padding: 0;
+}
+
 /* Page Transition Animation Component*/
 .page-enter {
   opacity: 0.01;

@@ -9,7 +9,6 @@ import { BsLink45Deg } from "react-icons/bs";
 import Button from "./CustomButtons";
 import FormInputGroup from "./form/FormInputGroup";
 import { Modal } from "react-bootstrap";
-import { StyledModal } from "../styles/Modal.styles";
 import { toast } from "react-toastify";
 import { updatePosts } from "../store/postSlice";
 import { userSelector } from "../store/auth";
@@ -50,13 +49,13 @@ const QuestionModal = ({ title, show, onHide }) => {
     }
   };
   return (
-    <StyledModal centered size="lg" show={show} onHide={onHide}>
+    <Modal centered size="lg" show={show} onHide={onHide}>
       <Modal.Header closeButton>
         <Modal.Title>{title}</Modal.Title>
       </Modal.Header>
       <Modal.Body className="p-4">
-        <Avatar src={user.photo} size="4rem" />
-        <span>{user.email}</span>
+        <Avatar className="d-inline-block" src={user.photo} size="4rem" />
+        <span className="ml-3">{user.email}</span>
         <FormContainer
           initialValues={initialValues}
           validationSchema={validationSchema}
@@ -78,7 +77,7 @@ const QuestionModal = ({ title, show, onHide }) => {
           </div>
         </FormContainer>
       </Modal.Body>
-    </StyledModal>
+    </Modal>
   );
 };
 
