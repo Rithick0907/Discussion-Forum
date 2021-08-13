@@ -1,0 +1,17 @@
+@use "./variables" as *;
+
+@function getBtnColor($color-name) {
+  @return map-get($btn-color, $color-name);
+}
+
+@function getBgColor($color-name) {
+  @return map-get($bg-color, $color-name);
+}
+
+@function getFontColor($color-name) {
+  @return map-get($font-color, $color-name);
+}
+
+@function getScreenSize($size) {
+  @return map-get($screen-size, $size);
+}
