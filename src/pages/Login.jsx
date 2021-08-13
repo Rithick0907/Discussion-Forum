@@ -7,7 +7,6 @@ import { auth, signInWithGoogle } from "../service/firebase.utils";
 import { AiOutlineMail } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import Navbar from "../components/Navbar";
-import { StyledDiv } from "../styles/Login.styles";
 import { passwordValidation } from "../validate";
 import { toast } from "react-toastify";
 
@@ -34,9 +33,9 @@ const Login = () => {
   return (
     <>
       <Navbar />
-      <StyledDiv>
+      <div className="auth-page">
         <div className="form-container">
-          <h1>Log In To Forum</h1>
+          <h1 className="text-center mt-5">Log In To Forum</h1>
           <FormContainer
             initialValues={{
               email: "",
@@ -47,7 +46,10 @@ const Login = () => {
           >
             <FormField name="email" label="Email" />
             <FormField type="password" name="password" label="Password" />
-            <Link className="d-inline-block w-100 my-2" to="/forgetPassword">
+            <Link
+              className="link-primary d-inline-block w-100 my-2"
+              to="/forgetPassword"
+            >
               Forget Password?
             </Link>
             <div className="text-center">
@@ -59,17 +61,20 @@ const Login = () => {
             </div>
           </FormContainer>
           <div className="last-row">
-            <Link to="/signup">
-              <AiOutlineMail className="mr-2 mb-1 " size="2rem" />
+            <Link className="link-primary last-row__link" to="/signup">
+              <AiOutlineMail className="mr-2 mb-1" size="2rem" />
               Create account
             </Link>
-            <Link onClick={() => signInWithGoogle(history)}>
+            <Link
+              className="link-primary last-row__link"
+              onClick={() => signInWithGoogle(history)}
+            >
               <FcGoogle className="mr-2 mb-1" size="2rem" />
               Sign with Google
             </Link>
           </div>
         </div>
-      </StyledDiv>
+      </div>
     </>
   );
 };

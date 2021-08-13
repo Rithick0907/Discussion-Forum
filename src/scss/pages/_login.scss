@@ -1,0 +1,33 @@
+@use "../base/functions" as *;
+
+/*Auth Page*/
+.auth-page {
+  align-content: center;
+  background-color: getBgColor(primary);
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 1.2rem;
+  justify-content: center;
+  min-height: 89vh;
+}
+
+.last-row {
+  @at-root #{&}__link {
+    display: inline-block;
+    border: 1px solid lightgray;
+    font-weight: bold;
+    padding: 15px 0;
+    text-decoration: none;
+    width: 50%;
+
+    &:hover {
+      background-color: darken(getBtnColor(secondary), 10%);
+      color: getBgColor(primary);
+      text-decoration: none;
+    }
+
+    @media screen and (max-width: getScreenSize(xs)) {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+@use "../base/functions" as *;
+
+.link-primary {
+  color: getFontColor(primary);
+  text-align: center;
+  text-decoration: underline;
+
+  &:hover {
+    color: darken(getFontColor(primary), 25%);
+  }
+}

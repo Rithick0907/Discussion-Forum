@@ -7,7 +7,6 @@ import { auth, signInWithGoogle } from "../service/firebase.utils";
 import { AiOutlineMail } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import Navbar from "../components/Navbar";
-import { StyledDiv } from "../styles/Login.styles";
 import { passwordValidation } from "../validate";
 import { toast } from "react-toastify";
 
@@ -53,9 +52,9 @@ const Signup = () => {
   return (
     <>
       <Navbar />
-      <StyledDiv>
+      <div className="auth-page">
         <div className="form-container">
-          <h1>Sign Up To Forum</h1>
+          <h1 className="text-center mt-5">Sign Up To Forum</h1>
           <FormContainer
             initialValues={initialValues}
             onSubmit={handleSubmit}
@@ -78,17 +77,20 @@ const Signup = () => {
             </div>
           </FormContainer>
           <div className="last-row">
-            <Link to="/login">
+            <Link className="link-primary last-row__link" to="/login">
               <AiOutlineMail className="mr-2 mb-1" size="2rem" />
               Log In to account
             </Link>
-            <Link onClick={() => signInWithGoogle(history)}>
+            <Link
+              className="link-primary last-row__link"
+              onClick={() => signInWithGoogle(history)}
+            >
               <FcGoogle className="mr-2 mb-1" size="2rem" />
               Sign with Google
             </Link>
           </div>
         </div>
-      </StyledDiv>
+      </div>
     </>
   );
 };

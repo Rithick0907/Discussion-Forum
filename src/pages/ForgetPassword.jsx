@@ -7,7 +7,6 @@ import { auth, signInWithGoogle } from "../service/firebase.utils";
 import { AiOutlineMail } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import Navbar from "../components/Navbar";
-import { StyledDiv } from "../styles/Login.styles";
 import { toast } from "react-toastify";
 
 const initialValues = {
@@ -34,9 +33,9 @@ const ForgetPassword = () => {
   return (
     <>
       <Navbar />
-      <StyledDiv>
+      <div className="auth-page">
         <div className="form-container">
-          <h1>Reset Password</h1>
+          <h1 className="text-center mt-5">Reset Password</h1>
           <FormContainer
             initialValues={initialValues}
             onSubmit={handleResetPassword}
@@ -51,17 +50,20 @@ const ForgetPassword = () => {
             </div>
           </FormContainer>
           <div className="last-row">
-            <Link to="/signup">
+            <Link className="link-primary last-row__link" to="/signup">
               <AiOutlineMail className="mr-2 mb-1" size="2rem" />
               Create and account
             </Link>
-            <Link onClick={() => signInWithGoogle(history)}>
+            <Link
+              className="link-primary last-row__link"
+              onClick={() => signInWithGoogle(history)}
+            >
               <FcGoogle className="mr-2 mb-1" size="2rem" />
               Sign with Google
             </Link>
           </div>
         </div>
-      </StyledDiv>
+      </div>
     </>
   );
 };
