@@ -19,7 +19,8 @@
     }
 
     &:active,
-    &:visited {
+    &:visited,
+    &:disabled {
       background-color: lighten(getBtnColor(primary), 20%);
     }
   }

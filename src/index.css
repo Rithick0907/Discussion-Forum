@@ -80,7 +80,7 @@ body {
 .custom-btn--primary:hover {
   background-color: #fb113b;
 }
-.custom-btn--primary:active, .custom-btn--primary:visited {
+.custom-btn--primary:active, .custom-btn--primary:visited, .custom-btn--primary:disabled {
   background-color: #fea7b7;
 }
 

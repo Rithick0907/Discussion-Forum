@@ -1,7 +1,12 @@
 import { Button } from "react-bootstrap";
 import cn from "classnames";
 
-const CustomButton = ({ title, answerButton, className, ...otherProps }) => (
+const CustomButton = ({
+  title,
+  answerButton,
+  className,
+  ...otherAttribute
+}) => (
   <Button
     bsPrefix="custom-btn"
     className={cn(className, {
@@ -9,7 +14,7 @@ const CustomButton = ({ title, answerButton, className, ...otherProps }) => (
       "custom-btn--primary": !answerButton,
     })}
     type="submit"
-    {...otherProps}
+    {...otherAttribute}
   >
     {title}
   </Button>

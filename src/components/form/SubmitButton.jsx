@@ -1,17 +1,17 @@
 import { Button } from "react-bootstrap";
-import React from "react";
+import cn from "classnames";
 import { useFormikContext } from "formik";
 
-const SubmitButton = ({ title, className, ...otherProps }) => {
+const SubmitButton = ({ title, className, ...otherAttributes }) => {
   const { isSubmitting } = useFormikContext();
-  const classNames = `custom-btn--primary ${className ? className : ""}`;
+
   return (
     <Button
       bsPrefix="custom-btn"
+      className={cn(className)}
       type="submit"
       disabled={isSubmitting}
-      className={classNames}
-      {...otherProps}
+      {...otherAttributes}
     >
       {title}
     </Button>
