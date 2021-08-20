@@ -13,7 +13,7 @@ const scssFiles = {
 const scssCompilation = () =>
   src(scssFiles.src)
     .pipe(sass())
-    .pipe(autoprefixer("last 2 versions"))
+    .pipe(autoprefixer("last 2 versions"))  //"last 2 versions" means support latest stable version (not beta or nightly builds) and one version earlier.
     .pipe(dest(scssFiles.dest));
 
 const watchScss = () => watch(scssFiles.src, scssCompilation);
